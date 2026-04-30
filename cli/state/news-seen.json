@@ -1,0 +1,460 @@
+{
+  "tradingview-news": {
+    "globenewswire:ffea40cb0094b:0": {
+      "fetched": "2026-04-29T11:49:47Z",
+      "hash": "sha256:981d20e7316d348300eba1bf509337f904691268c633ecf780065b17e9841f27"
+    },
+    "tag:reuters.com,2026-04-09:newsml_ZawKcx0W:0": {
+      "fetched": "2026-04-29T18:51:46Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_FWN40D0ZN:0": {
+      "fetched": "2026-04-29T11:49:50Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_FWN40I05Z:0": {
+      "fetched": "2026-04-29T11:49:50Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_FWN40I1BH:0": {
+      "fetched": "2026-04-29T16:06:27Z",
+      "hash": "sha256:c7ff31344b9b8c6b632dc8e9b13b6d84727c17031e7a220401fd8bc4fd087d61"
+    },
+    "tag:reuters.com,2026:newsml_FWN40K15X:0": {
+      "fetched": "2026-04-29T16:06:25Z",
+      "hash": "sha256:3b6f51fb21a67792613a11f3ae38982ef1eb816106751520dea888b2f491fbd8"
+    },
+    "tag:reuters.com,2026:newsml_FWN40R0M5:0": {
+      "fetched": "2026-04-29T16:06:20Z",
+      "hash": "sha256:85b0ff9870254737c69c34697a894b7b3bb8816396e08fc17fc41f44ef561414"
+    },
+    "tag:reuters.com,2026:newsml_FWN40R1HZ:0": {
+      "fetched": "2026-04-29T11:49:48Z",
+      "hash": "sha256:5abfa07d6d6d119aae8d84dce3063f2b39193bc1bd62a3ed641b3ec09828b62a"
+    },
+    "tag:reuters.com,2026:newsml_FWN40S0DS:0": {
+      "fetched": "2026-04-29T11:49:46Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_FWN40S0GH:0": {
+      "fetched": "2026-04-29T11:49:44Z",
+      "hash": "sha256:407dc510a547a74a1f2851494fda4ea139762021a477294ed4d8268dbf309533"
+    },
+    "tag:reuters.com,2026:newsml_FWN40S0W5:0": {
+      "fetched": "2026-04-29T11:49:45Z",
+      "hash": "sha256:f23ea47328896b5fe6eed124a8a723c3d71540d67c052f65a1d35f8532cf7806"
+    },
+    "tag:reuters.com,2026:newsml_FWN40S18J:0": {
+      "fetched": "2026-04-29T11:49:43Z",
+      "hash": "sha256:974ac5e23198a4b9f815f778b4975019a6c583ddc6d641b7498663993c86cae8"
+    },
+    "tag:reuters.com,2026:newsml_FWN40W0VY:0": {
+      "fetched": "2026-04-29T11:49:39Z",
+      "hash": "sha256:6917e06fe48c055ad23bd6de1659198fb9a2149f9c3a73b1a99ffa8d7a229ba2"
+    },
+    "tag:reuters.com,2026:newsml_FWN40W0Y5:0": {
+      "fetched": "2026-04-29T11:49:37Z",
+      "hash": "sha256:365d81063c9b8fc54051660026afe0031a62dab7850d91ed6871cc5438724d62"
+    },
+    "tag:reuters.com,2026:newsml_FWN40Z1AU:0": {
+      "fetched": "2026-04-29T18:51:46Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_FWN4100C2:0": {
+      "fetched": "2026-04-29T11:49:36Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_FWN41101A:0": {
+      "fetched": "2026-04-29T11:49:32Z",
+      "hash": "sha256:edaf59c1fb354137de5cf649b3d460a2d018e406e7f29c0f8e77ddaea82d8269"
+    },
+    "tag:reuters.com,2026:newsml_FWN41408K:0": {
+      "fetched": "2026-04-29T11:49:29Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_FWN41413C:0": {
+      "fetched": "2026-04-29T11:49:28Z",
+      "hash": "sha256:b7e3da29d2acb976be4e519eae18ae5c8ffa0f9755ba244fa962aca4e142a0b9"
+    },
+    "tag:reuters.com,2026:newsml_FWN4150LF:0": {
+      "fetched": "2026-04-30T13:22:44Z",
+      "hash": "sha256:9fc5ead431329e2dc37db6f7b9dcdcb23257686cb0653aa049435060efea4e3a"
+    },
+    "tag:reuters.com,2026:newsml_FWN4150WE:0": {
+      "fetched": "2026-04-29T11:49:27Z",
+      "hash": "sha256:03a0bbb7f58d628726c29ba005d720ecd6f2edd9483d2a4edd99cd02973c7bee"
+    },
+    "tag:reuters.com,2026:newsml_FWN4151B9:0": {
+      "fetched": "2026-04-30T13:22:43Z",
+      "hash": "sha256:083c862353f01a43383a3def254a5f3e8f4be6163f0289bd9c3888b58c545084"
+    },
+    "tag:reuters.com,2026:newsml_FWN41704Q:0": {
+      "fetched": "2026-04-30T13:22:37Z",
+      "hash": "sha256:e41a80736f2e815ab12ba59aea97283797325bfda6af445f29d0e2c8480e16cb"
+    },
+    "tag:reuters.com,2026:newsml_FWN41705C:0": {
+      "fetched": "2026-04-30T13:22:35Z",
+      "hash": "sha256:7717bbf515aa3a3328eb13cfbfb564e067fe84f52e5c89ea4cdcaabf17706c2d"
+    },
+    "tag:reuters.com,2026:newsml_FWN4170RP:0": {
+      "fetched": "2026-04-30T13:22:32Z",
+      "hash": "sha256:dde3b9b2e29c01f6b15292163c63aaf8dcc19307b48fae9d69e7388176b935b0"
+    },
+    "tag:reuters.com,2026:newsml_FWN41713P:0": {
+      "fetched": "2026-04-30T13:22:34Z",
+      "hash": "sha256:7dbdc9e8623aa82bc4b894056d0a7ae8e02c0ddff7120d52c145a50f6c5e03f7"
+    },
+    "tag:reuters.com,2026:newsml_FWN41A0LB:0": {
+      "fetched": "2026-04-29T18:51:46Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_FWN41A131:0": {
+      "fetched": "2026-04-29T18:51:46Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_FWN41A1AO:0": {
+      "fetched": "2026-04-30T13:22:26Z",
+      "hash": "sha256:6000a50390e7f880ede7a568f020d83177f08c0c3ea766017c48f8c06a4c6ccc"
+    },
+    "tag:reuters.com,2026:newsml_FWN41B03L:0": {
+      "fetched": "2026-04-30T13:22:25Z",
+      "hash": "sha256:54460cb67cb131d42ea643c9491f300700e961ad588a813510b69171a285f301"
+    },
+    "tag:reuters.com,2026:newsml_FWN41B140:0": {
+      "fetched": "2026-04-30T13:22:24Z",
+      "hash": "sha256:a12c7512da173edf83fcce162c337a14809cdfa3894caa6001e6651131262a87"
+    },
+    "tag:reuters.com,2026:newsml_FWN41C0ER:0": {
+      "fetched": "2026-04-29T11:49:19Z",
+      "hash": "sha256:ce0d1e485c175ea7d2b5625d93b28639d80929e247c6dcd33794999ac7c7edae"
+    },
+    "tag:reuters.com,2026:newsml_FWN41C0HD:0": {
+      "fetched": "2026-04-30T13:22:21Z",
+      "hash": "sha256:ab09403c8b9292b55f6973dadc65cd63456a465119948bc33f326c64fd68cfcd"
+    },
+    "tag:reuters.com,2026:newsml_FWN41C0JF:0": {
+      "fetched": "2026-04-30T13:22:20Z",
+      "hash": "sha256:50f5a111d30ad5bb8d8e0a4e2c1ade347ed7aebc7f728b7e951e10ca9413d60d"
+    },
+    "tag:reuters.com,2026:newsml_FWN41C187:0": {
+      "fetched": "2026-04-30T13:04:38Z",
+      "hash": "sha256:fa1471aa0c3caa074333292fb00a3ba19aca3d0d10222feba2154cdfe011ca52"
+    },
+    "tag:reuters.com,2026:newsml_FWN41C1SH:0": {
+      "fetched": "2026-04-30T13:04:37Z",
+      "hash": "sha256:d1f35f99537ea8306659e8ddbce4d8725e941cda9d4dc75d0461dda160abebe3"
+    },
+    "tag:reuters.com,2026:newsml_FWN41C1SS:0": {
+      "fetched": "2026-04-30T13:04:36Z",
+      "hash": "sha256:c06526afea94740780852c867aaf784cd4fc6eed5db2873fd30ca75a13429d1c"
+    },
+    "tag:reuters.com,2026:newsml_FWN41C1VI:0": {
+      "fetched": "2026-04-30T13:04:35Z",
+      "hash": "sha256:d6ef59fa3f6249e50654ff9af60ae522d70ac06e2c6468e3b1416472bef2b9a1"
+    },
+    "tag:reuters.com,2026:newsml_FWN41C1VQ:0": {
+      "fetched": "2026-04-30T13:04:33Z",
+      "hash": "sha256:71a9be3b3a960910fb848685122bc4fbd85c95cbfc111682d353325eac249d25"
+    },
+    "tag:reuters.com,2026:newsml_FWN41D06W:0": {
+      "fetched": "2026-04-30T13:04:10Z",
+      "hash": "sha256:a196a0245ef0c8498d951438536c862c4ec6d31d8e2baca1629699569ba095a0"
+    },
+    "tag:reuters.com,2026:newsml_FWN41D0KS:0": {
+      "fetched": "2026-04-30T13:04:09Z",
+      "hash": "sha256:0261521ecd5e97e5af39fedc6b8b1a7bff2fc7faae82fadf303d946c9c8d4b40"
+    },
+    "tag:reuters.com,2026:newsml_FWN41D19B:0": {
+      "fetched": "2026-04-30T13:04:08Z",
+      "hash": "sha256:ca0f0cff21d5b486d35508a7a829953b6e6ba500ac9df6851d57bfb34ca3f1bf"
+    },
+    "tag:reuters.com,2026:newsml_L1N4140B4:0": {
+      "fetched": "2026-04-29T11:49:29Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_L4N40R1U2:0": {
+      "fetched": "2026-04-29T11:49:49Z",
+      "hash": "sha256:09871668f1ca5e3aa0a612508f1d5f207a5103865d3d0206952638bb849d7b3e"
+    },
+    "tag:reuters.com,2026:newsml_L6N40R0RO:0": {
+      "fetched": "2026-04-29T16:06:21Z",
+      "hash": "sha256:840e737d9d123775c1bb2c6364122ef3d1e8bf6d8276797119c687581a3b2afd"
+    },
+    "tag:reuters.com,2026:newsml_L6N4130EY:0": {
+      "fetched": "2026-04-29T11:49:31Z",
+      "hash": "sha256:2029d64894486a267c61ed1fb4000187d82a4c520192e46906bf4fb0c4ce9208"
+    },
+    "tag:reuters.com,2026:newsml_L6N4130FK:0": {
+      "fetched": "2026-04-29T11:49:30Z",
+      "hash": "sha256:9e3eebf524b47af5f96ec92ad4792f7744560c5451246512ec4ee6b20f49ffc2"
+    },
+    "tag:reuters.com,2026:newsml_L6N4150N2:0": {
+      "fetched": "2026-04-30T13:22:46Z",
+      "hash": "sha256:d55623e271d1b5cd693e754564cb9aff12d8827b4143371a948799fa9dbdae9c"
+    },
+    "tag:reuters.com,2026:newsml_L8N40F026:0": {
+      "fetched": "2026-04-29T11:49:50Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_L8N40I05H:0": {
+      "fetched": "2026-04-29T16:06:29Z",
+      "hash": "sha256:0f5eac50f898680aaaedd01d88637dca77afb75e92649f164d87a8114e1eb5d5"
+    },
+    "tag:reuters.com,2026:newsml_L8N40I05M:0": {
+      "fetched": "2026-04-29T16:06:30Z",
+      "hash": "sha256:6ad9951af53c043f38a40c9e8f4478e62662588b36019d777a6882e632d46631"
+    },
+    "tag:reuters.com,2026:newsml_L8N40I070:0": {
+      "fetched": "2026-04-29T18:51:46Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_L8N40P032:0": {
+      "fetched": "2026-04-29T16:06:24Z",
+      "hash": "sha256:65de91d37b0161fd174f45b44cc2ce3b8da35d52cdfc4f82485dbaea9d97764a"
+    },
+    "tag:reuters.com,2026:newsml_L8N40P038:0": {
+      "fetched": "2026-04-29T16:06:23Z",
+      "hash": "sha256:9291ea497627ce7721613a126d68d353cd501fef87051eb5a982a796eddf9efd"
+    },
+    "tag:reuters.com,2026:newsml_L8N40P03B:0": {
+      "fetched": "2026-04-29T18:51:46Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_L8N40R072:0": {
+      "fetched": "2026-04-29T11:49:50Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_L8N40T05F:0": {
+      "fetched": "2026-04-29T11:49:41Z",
+      "hash": "sha256:f5f327eb5d77312cda790003f08b60c2578d6f8983f7f160537a730bd9c19207"
+    },
+    "tag:reuters.com,2026:newsml_L8N40T0V8:0": {
+      "fetched": "2026-04-29T11:49:40Z",
+      "hash": "sha256:44a04c93e090fcb12507f6e6526096c117e432f19bfd13840ab029b2dfc7bdf6"
+    },
+    "tag:reuters.com,2026:newsml_L8N40T1CR:0": {
+      "fetched": "2026-04-29T11:49:40Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_L8N41005B:0": {
+      "fetched": "2026-04-29T11:49:36Z",
+      "hash": "sha256:901c94cce14eef6d77edbe386c20fad0d0f1c96aedb2194b9b68a4fe357861df"
+    },
+    "tag:reuters.com,2026:newsml_L8N41302R:0": {
+      "fetched": "2026-04-29T11:49:35Z",
+      "hash": "sha256:599089cdd4324795634448de3f6a02498c21466f70893ba454e6ef8d9675552d"
+    },
+    "tag:reuters.com,2026:newsml_L8N413034:0": {
+      "fetched": "2026-04-29T11:49:34Z",
+      "hash": "sha256:99ad8afcbeee4db88a664e31731b86bd54b0bcc3cc321d7a0c49dd6e4d657c8c"
+    },
+    "tag:reuters.com,2026:newsml_L8N41508U:0": {
+      "fetched": "2026-04-30T13:22:47Z",
+      "hash": "sha256:8d7dc4833e29ef7a088001db5e09c43a6a727d79c9caa3cef5359e40761fa30f"
+    },
+    "tag:reuters.com,2026:newsml_L8N4160I9:0": {
+      "fetched": "2026-04-30T13:22:42Z",
+      "hash": "sha256:ed202fdc3790bfa4ed0e80b7203b0e7f0390a4fb654d3d0b41b94cc3f8911d24"
+    },
+    "tag:reuters.com,2026:newsml_L8N4160IM:0": {
+      "fetched": "2026-04-30T13:22:41Z",
+      "hash": "sha256:e26ae691b5bcdd122a91bf8607a3d9975fd8e1776eedf0a811eab164032aa4df"
+    },
+    "tag:reuters.com,2026:newsml_L8N417087:0": {
+      "fetched": "2026-04-30T13:22:39Z",
+      "hash": "sha256:efaf5f8bd755fccaf223a903b79bc6b14bcebfe9bbbecf638b453f62deee396b"
+    },
+    "tag:reuters.com,2026:newsml_L8N4170A1:0": {
+      "fetched": "2026-04-30T13:22:38Z",
+      "hash": "sha256:20518be86af6ba3d152d62e88a6a9ddd6a2963ddca84af8a9208ca2919b968fb"
+    },
+    "tag:reuters.com,2026:newsml_L8N417226:0": {
+      "fetched": "2026-04-30T13:22:33Z",
+      "hash": "sha256:ca27ebd97ae929e1fdeb84fc7c31ee7f87c94e0a05e98e31e26cd79410878035"
+    },
+    "tag:reuters.com,2026:newsml_L8N41B08G:0": {
+      "fetched": "2026-04-30T13:22:30Z",
+      "hash": "sha256:660c4344dd08fcfaa3a56981637ad8f5d7914114b1ffada58e6cb0e9ccf5aed8"
+    },
+    "tag:reuters.com,2026:newsml_L8N41B09T:0": {
+      "fetched": "2026-04-30T13:22:29Z",
+      "hash": "sha256:5d20941a23163ea2dbbce40a330683349d20724f1962604d2dbb5705478cb69c"
+    },
+    "tag:reuters.com,2026:newsml_L8N41B0BP:0": {
+      "fetched": "2026-04-30T13:22:27Z",
+      "hash": "sha256:622c3806a079f2909cf60a2a9603537c5b9898a51266430bd877c384d50f470c"
+    },
+    "tag:reuters.com,2026:newsml_L8N41C07O:0": {
+      "fetched": "2026-04-30T13:22:22Z",
+      "hash": "sha256:fa1f8220b8e615af2b6313bf87797b658cc8bf7a6f2e8334814f698fb66952f5"
+    },
+    "tag:reuters.com,2026:newsml_L8N41C09B:0": {
+      "fetched": "2026-04-29T11:49:21Z",
+      "hash": "sha256:22635556ff483aecc99ece48fcb7ff2e2c4462afefa2d740ca2a51816f073d48"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0EC:0": {
+      "fetched": "2026-04-30T13:04:26Z",
+      "hash": "sha256:6e021248e016ca0d5f7da683fd8810d24fb373fae16957f90a586cb1dc2b807c"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0EG:0": {
+      "fetched": "2026-04-30T13:04:25Z",
+      "hash": "sha256:ebb4404cd2764f267f5a674d63a02c14c1077bf0f87eeeb03f6eb76ac308d81a"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0FP:0": {
+      "fetched": "2026-04-30T13:04:23Z",
+      "hash": "sha256:bfc205d97de7cf7caaf4af5948cfa7ed40c7cadfbeecf5fa5675bef2189b3882"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0FW:0": {
+      "fetched": "2026-04-30T13:04:22Z",
+      "hash": "sha256:1b2d0cff4457cc646d301f536b8627b40a9422e527f1cf255745aeb016d86d44"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0G4:0": {
+      "fetched": "2026-04-30T13:04:21Z",
+      "hash": "sha256:145b2f731f7a0048140df1ec3bb7c4fb09e429fdc63911fcd454a23058827f77"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0GH:0": {
+      "fetched": "2026-04-30T13:04:19Z",
+      "hash": "sha256:4abacd0afaa47240c1a042fce1870afb8c39e05d405840a773bb3e8f67fb7420"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0GU:0": {
+      "fetched": "2026-04-30T13:04:18Z",
+      "hash": "sha256:4b3e498a53f70bb4457a80da19dc5d796a9f4827599ac155fab78f6c1d29b56b"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0HA:0": {
+      "fetched": "2026-04-30T13:04:17Z",
+      "hash": "sha256:c762624edcfcd5c1d6093fa6fabed5e8123dc60586a8d274bf8002ed3a469fc7"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0HF:0": {
+      "fetched": "2026-04-30T13:04:16Z",
+      "hash": "sha256:427abf78c12d339fee1ffe2e7000a6d86cdc56119712014b20c4513cc8c06723"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0HR:0": {
+      "fetched": "2026-04-30T13:04:14Z",
+      "hash": "sha256:d891e0973137f20d1a8ad4fb62f1e09334b4397797249c7ee07c1c3eb7fb0326"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0IP:0": {
+      "fetched": "2026-04-30T13:04:13Z",
+      "hash": "sha256:a5782835747916d5d0c9472dbd28de95589a5fa1378d4c9c6a712cd222ddb7e3"
+    },
+    "tag:reuters.com,2026:newsml_L8N41D0IY:0": {
+      "fetched": "2026-04-30T13:04:12Z",
+      "hash": "sha256:5429a960d4d55946019ec7e088f2f1bc60a338950d80b1162aa77e40f9042b2d"
+    },
+    "tag:reuters.com,2026:newsml_S8N3ZR00M:0": {
+      "fetched": "2026-04-29T11:49:28Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_S8N3ZR00O:0": {
+      "fetched": "2026-04-29T16:06:16Z",
+      "hash": "sha256:b137b56da3c88c5c38848050dca622d21d29e97f180363b5808c09b642926c40"
+    },
+    "tag:reuters.com,2026:newsml_S8N3ZX04W:0": {
+      "fetched": "2026-04-29T11:49:26Z",
+      "hash": "sha256:3d9887dc7cb4677fc727479f2949679621b6c0a5d85899c36b6b77b41eb8f065"
+    },
+    "tag:reuters.com,2026:newsml_S8N3ZX056:0": {
+      "fetched": "2026-04-29T11:49:23Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_S8N3ZX05A:0": {
+      "fetched": "2026-04-29T11:49:23Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tag:reuters.com,2026:newsml_S8N41308E:0": {
+      "fetched": "2026-04-29T16:06:18Z",
+      "hash": "sha256:2dda35f30d2f2f96c38b53fcc84f4943ff9e581dcff337b7e617bf59897e2186"
+    },
+    "tag:reuters.com,2026:newsml_S8N41608V:0": {
+      "fetched": "2026-04-29T11:49:22Z",
+      "hash": "sha256:7f4326c34fadfea7b899f5839a9d160ee222841864c0ec87957ee0825d947660"
+    },
+    "urn:summary_document_report:quartr.com:3251868:0": {
+      "fetched": "2026-04-29T11:49:27Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "urn:summary_document_report:quartr.com:3261798:0": {
+      "fetched": "2026-04-29T11:49:24Z",
+      "hash": "sha256:ea7243dfc718fc5b36874328bc1f02aa3844fe3d6c17640c2c8dd40fee6c71c1"
+    },
+    "urn:summary_document_report:quartr.com:3265607:0": {
+      "fetched": "2026-04-29T11:49:23Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "urn:summary_document_report:quartr.com:3265911:0": {
+      "fetched": "2026-04-29T11:49:23Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "urn:summary_document_report:quartr.com:3268246:0": {
+      "fetched": "2026-04-29T11:46:12Z",
+      "hash": "sha256:f864c0eef90e16cea6747924790e33ae378943cded90c16b3c02bf336b60070f"
+    },
+    "urn:summary_document_report:quartr.com:3270332:0": {
+      "fetched": "2026-04-29T16:06:14Z",
+      "hash": "sha256:db535910ca61e26703648d7651c03d165c7fdb591661c86a0d460365a959b0ba"
+    },
+    "urn:summary_document_report:quartr.com:3270462:0": {
+      "fetched": "2026-04-30T13:04:31Z",
+      "hash": "sha256:498a9ce3ec1314167e65cc15127d7e36462c3dc7022c3bee8b4f4f2c4fe1fdcb"
+    },
+    "urn:summary_document_report:quartr.com:3271561:0": {
+      "fetched": "2026-04-30T13:04:28Z",
+      "hash": "sha256:2a8adce22c0589a2ddfb5dab364bb41049dd8bb6e97facd1eef2155558f37016"
+    },
+    "urn:summary_document_report:quartr.com:3271564:0": {
+      "fetched": "2026-04-30T13:04:27Z",
+      "hash": "sha256:391ac666636e8a5d3d691102c3ee69821e3616b98a913bded00f2a63860d2348"
+    },
+    "urn:summary_document_slides:quartr.com:3251867:0": {
+      "fetched": "2026-04-29T11:49:27Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "urn:summary_document_slides:quartr.com:3262234:0": {
+      "fetched": "2026-04-29T11:49:23Z",
+      "hash": "sha256:0d14aae3cda03c465623d9fd977ad1ccb79d7a46575780b60bac2a1a41a8beb1"
+    },
+    "urn:summary_document_slides:quartr.com:3265610:0": {
+      "fetched": "2026-04-29T11:49:23Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "urn:summary_document_slides:quartr.com:3265913:0": {
+      "fetched": "2026-04-29T11:49:23Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "urn:summary_document_slides:quartr.com:3268228:0": {
+      "fetched": "2026-04-29T11:49:18Z",
+      "hash": "sha256:1875b454bf14d442f82c7e9484a2a47a2fba4d76ba88eb5b23039ac5feb2e44b"
+    },
+    "urn:summary_document_slides:quartr.com:3270333:0": {
+      "fetched": "2026-04-29T16:06:15Z",
+      "hash": "sha256:b011f1e1751d43970042e92335f789615c6078ff257ab03e6c0ac452424e8f9d"
+    },
+    "urn:summary_document_slides:quartr.com:3270460:0": {
+      "fetched": "2026-04-30T13:04:32Z",
+      "hash": "sha256:d992b406d1caf3271f4f44932aa0eec424c6e255f414290b5016e13fb12c4504"
+    },
+    "urn:summary_document_transcript:quartr.com:3266090:0": {
+      "fetched": "2026-04-29T11:49:23Z",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "urn:summary_document_transcript:quartr.com:3270081:0": {
+      "fetched": "2026-04-29T16:06:19Z",
+      "hash": "sha256:d39e847313060b406bd01fd108cffa24c55725eec658b94cac61d0fd98b350f0"
+    },
+    "urn:summary_document_transcript:quartr.com:3270916:0": {
+      "fetched": "2026-04-30T13:04:30Z",
+      "hash": "sha256:34a8ddc17a509ba8532517168ab7f9f744dc523c856fbce6b8aaa5c651e2a3e4"
+    },
+    "urn:summary_document_transcript:quartr.com:3274047:0": {
+      "fetched": "2026-04-30T13:22:19Z",
+      "hash": "sha256:268e245883ddc7fb3f501cd26b6bcf1089c032a2cf3aaadcfda21ffcefbc2e5e"
+    },
+    "urn:summary_document_transcript:quartr.com:3274270:0": {
+      "fetched": "2026-04-30T13:22:17Z",
+      "hash": "sha256:ce057669c6ebffa47b5cb83953f6f24351c1ff6730d6e5cf24de28628c76cf2a"
+    },
+    "urn:summary_document_transcript:quartr.com:3274959:0": {
+      "fetched": "2026-04-30T13:22:16Z",
+      "hash": "sha256:3a3b0b26dc1ddbb02ce0fc9dcef8dc1bb0b0b6397cf4e1f6eafc720c83800924"
+    }
+  }
+}

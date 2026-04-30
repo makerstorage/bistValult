@@ -1,0 +1,17 @@
+[project]
+name = "bistvalult-cli"
+version = "0.1.0"
+description = "Data fetchers for the bistValult research wiki"
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cli*"]
+
+[tool.uv]
+python-preference = "only-managed"
