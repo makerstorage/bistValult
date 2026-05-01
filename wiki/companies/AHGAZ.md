@@ -29,9 +29,13 @@ Fact: AHGAZ (Ahlatcı Doğal Gaz) is a Turkish natural gas distribution company.
 | FY 2025 revenue | TRY 39.4 billion | 2025-12-31 | [[sources/2026-04-28-reuters-ahlatci-dogal-gaz-fy-net-profit-rises-to-2-9-bln-lira-yoy-be757f16]] |
 | FY 2024 revenue | TRY 34.3 billion | 2024-12-31 | [[sources/2026-04-28-reuters-ahlatci-dogal-gaz-fy-net-profit-rises-to-2-9-bln-lira-yoy-be757f16]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-28: FY 2025 results — net profit TRY 2.9 billion (+26% YoY), revenue TRY 39.4 billion (+15% YoY). [[sources/2026-04-28-reuters-ahlatci-dogal-gaz-fy-net-profit-rises-to-2-9-bln-lira-yoy-be757f16]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

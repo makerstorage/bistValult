@@ -26,9 +26,13 @@ Fact: Gozde Girisim Sermayesi Yatirim Ortakligi A.S. is a venture capital invest
 |--------|-------|-------|--------|
 | Q1 Net loss | TRY 1.4 billion | 2026-03-31 | [[sources/2026-04-30-reuters-gozde-gsyo-q1-loss-shrinks-to-1-4-bln-lira-yoy-769ff9ae]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-30: Q1 2026 net loss of TRY 1.4 billion, narrowed from TRY 2.0 billion in Q1 2025. [[sources/2026-04-30-reuters-gozde-gsyo-q1-loss-shrinks-to-1-4-bln-lira-yoy-769ff9ae]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

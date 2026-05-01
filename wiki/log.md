@@ -26,3 +26,30 @@ grep "^## \[" wiki/log.md | tail -10
 - Contradictions: none
 - Needs review: 2026-04-30-quartr-tknsa-revenue-up-3-and-ebitda-improved-but-net-loss-persists-af673dee (Quartr AI-generated), 2026-04-29-quartr-ykbnk-q1-2026-net-profit-more-than-doubled-year-over-year-dr-b04d1b17 (Quartr AI-generated; headline/body inconsistency on profit growth magnitude), 2026-04-29-quartr-eregl-strong-q1-results-with-rising-ebitda-per-ton-and-robus-829c608f (Quartr AI-generated)
 - Skipped (already ingested): none
+
+## [2026-04-30] compact | weekly run
+
+- Sources pruned: 0 (protected/skipped: 0) — all 50 source pages are ≤ 8 days old; none exceeded 30-day threshold.
+- Claims consolidated: 0 (redundant files deleted: 0) — all 19 claim pages cover distinct assertions; no duplicates detected.
+- Pages migrated to new format: 36 — renamed `## Events` → `## Events (last 30 days)` and added `## History\n\n_None yet._` on all company pages.
+- Pages compacted (events → history): 0 — all events are dated 2026-04-22 to 2026-04-30, all within the 30-day window; no bullets moved to History.
+- Review flags: none
+
+## [2026-05-01] ingest | kap FAILED — http.client.IncompleteRead: IncompleteRead(4319044 bytes read) — network truncation while fetching disclosure detail page
+
+## [2026-05-01] update | kap fetcher fix + bogus-data cleanup
+
+- Bug: `cli/fetch_kap.py` filtered KAP listings only by `memberType=PYS`, which is broader than the BIST equity universe — it includes portfolio managers, REIT funds, etc. Earlier runs ingested 71 raw filings and produced 12 wiki/companies pages (PA1, LAT, ALA, BLP, GPO, IEP, ISP, OGP, PHP, PIE, SRT, VVP) that are not BIST tickers.
+- Fix: fetcher now filters `stockCode` against `cli.lib.registry.all_tickers()` (canonical BIST list backed by `raw_sources/company_meta/`), same approach as `fetch_news.py`. Also added retry-on-`IncompleteRead`/`RemoteDisconnected`/transient-network for detail-page fetches so a single bad page can't abort a run.
+- Cleanup: deleted 71 files in `raw_sources/kap_filings/`, 12 untracked `wiki/companies/*.md`, 30 `wiki/sources/2026-04-30-kap-*.md`. Removed 12 company entries and 30 source entries from `wiki/index.md`. Reset `cli/state/kap-seen.json` to empty.
+- Verified post-fix run on the live KAP feed below.
+
+## [2026-05-01] ingest | kap (no new disclosures)
+
+## [2026-05-01] compact | weekly run
+- Sources pruned: 0 (protected/skipped: 0) — all 62 source pages are ≤ 17 days old (newest 2026-04-30, oldest 2026-04-14); none exceeded 30-day threshold.
+- Claims consolidated: 0 (redundant files deleted: 0) — all 19 claim pages cover distinct assertions; no duplicates detected.
+- Pages migrated to new format: 0 — all company pages already have `## Events (last 30 days)` and `## History` sections from 2026-04-30 run.
+- Pages compacted (events → history): 1 — OTKAR: moved 2026-01-27 MoU event (94 days old) to History section.
+- Review flags: none
+## [2026-05-01] ingest | kap (no new disclosures)

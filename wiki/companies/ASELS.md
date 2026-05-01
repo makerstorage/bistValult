@@ -30,9 +30,13 @@ Fact: Aselsan is a Turkish defense electronics company producing air defense sys
 | P/B | Not available | | |
 | Net debt / EBITDA | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-30: Signed international sales contracts totaling USD 125.1 million for air defense, radar, electronic warfare, electro-optic, avionics, and communication systems. [[sources/2026-04-30-reuters-aselsan-says-it-signs-sales-contracts-with-international-cus-5c7ecaa2]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

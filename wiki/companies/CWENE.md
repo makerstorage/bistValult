@@ -29,10 +29,14 @@ Fact: CWENE is a Turkish energy engineering company. [unsourced — inferred fro
 | Q1 2026 revenue | TRY 4.32 billion | 2026-03-31 | [[sources/2026-04-23-reuters-cw-enerji-q1-net-profit-up-at-737-7-mln-lira-yoy-348e4cd0]] |
 | Q1 2025 revenue | TRY 3.29 billion | 2025-03-31 | [[sources/2026-04-23-reuters-cw-enerji-q1-net-profit-up-at-737-7-mln-lira-yoy-348e4cd0]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-23: Q1 2026 — net profit TRY 737.7 million (+99% YoY), revenue TRY 4.32 billion (+31% YoY). [[sources/2026-04-23-reuters-cw-enerji-q1-net-profit-up-at-737-7-mln-lira-yoy-348e4cd0]]
 - 2026-04-29: A unit of CWENE signed sales agreements worth $2.1 million. [[sources/2026-04-29-reuters-cw-enerji-says-unit-signs-sales-agreements-worth-2-1-million-42222c30]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

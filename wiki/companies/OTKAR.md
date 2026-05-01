@@ -2,7 +2,7 @@
 type: company
 ticker: OTKAR
 sector: Defense
-last_updated: 2026-04-30
+last_updated: 2026-05-01
 sources: [2026-04-30-reuters-otokar-says-it-signs-agreement-to-buy-96-77-of-romania-s-aut-ca1989cd]
 tags: [company]
 ---
@@ -30,10 +30,13 @@ Fact: Otokar Otomotiv ve Savunma Sanayi A.S. is a Turkish defense and automotive
 | P/B | Not available | | |
 | Net debt / EBITDA | Not available | | |
 
-## Events
+## Events (last 30 days)
 
-- 2026-01-27: Memorandum of Understanding disclosed for acquisition of Romania-based Automecanica.
 - 2026-04-30: Signed share purchase agreement to acquire 96.77% of Romania's Automecanica for approximately EUR 85 million. Automecanica to be direct subsidiary supporting Romanian 4x4 tactical armored vehicle tender. [[sources/2026-04-30-reuters-otokar-says-it-signs-agreement-to-buy-96-77-of-romania-s-aut-ca1989cd]]
+
+## History
+
+On 2026-01-27, Otokar disclosed a Memorandum of Understanding for the acquisition of Romania-based Automecanica, laying the groundwork for the subsequent share purchase agreement signed on 2026-04-30.
 
 ## Exposure
 

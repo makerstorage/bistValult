@@ -27,9 +27,13 @@ Fact: Anadolu Efes is a major Turkish beverage company, primarily a brewer. It o
 | Revenue (TTM) | Not available | | |
 | Net income (TTM) | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-29: Signed a toll-filling agreement for local beer production in Uzbekistan via newly established Efes Tashkent FE LLC. Commercial operations expected to commence Q2 2026. [[sources/2026-04-29-reuters-anadolu-efes-says-it-signs-toll-filling-agreement-for-local-9786cd60]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

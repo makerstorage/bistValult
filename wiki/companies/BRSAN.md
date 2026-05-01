@@ -27,9 +27,13 @@ Fact: BRSAN (Borusan Mannesmann Boru) is a Turkish steel pipe manufacturer with 
 | Revenue (TTM) | Not available | | |
 | Net income (TTM) | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-24: US unit received new sales orders of approximately $100 million. [[sources/2026-04-24-reuters-borusan-mannesmann-boru-says-us-unit-receives-new-sales-orde-845f41b1]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

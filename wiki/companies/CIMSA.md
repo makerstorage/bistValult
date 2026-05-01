@@ -27,9 +27,13 @@ Fact: Cimsa Cimento Sanayi ve Ticaret A.S. is a Turkish cement producer. [unsour
 | Q1 Net profit | TRY 640.7 million | 2026-03-31 | [[sources/2026-04-30-reuters-cimsa-cimento-q1-net-profit-jumps-to-640-7-mln-lira-yoy-7b386d9f]] |
 | Q1 Revenue | TRY 11.6 billion | 2026-03-31 | [[sources/2026-04-30-reuters-cimsa-cimento-q1-net-profit-jumps-to-640-7-mln-lira-yoy-7b386d9f]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-30: Q1 2026 net profit of TRY 640.7 million, up ~80% from TRY 355.1 million in Q1 2025. Revenue essentially flat at TRY 11.6 billion vs TRY 11.7 billion. [[sources/2026-04-30-reuters-cimsa-cimento-q1-net-profit-jumps-to-640-7-mln-lira-yoy-7b386d9f]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

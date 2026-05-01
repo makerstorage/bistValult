@@ -29,10 +29,14 @@ Fact: Turkiye Sinai Kalkinma Bankasi (TSKB) is a Turkish development and investm
 | Q1 Net fee & commission income | TRY 126.2 million | 2026-03-31 | [[sources/2026-04-30-reuters-tskb-q1-net-profit-down-at-2-9-bln-lira-yoy-ba8d4f85]] |
 | End-Q1 Loans | TRY 254.9 billion | 2026-03-31 | [[sources/2026-04-30-reuters-tskb-q1-net-profit-down-at-2-9-bln-lira-yoy-ba8d4f85]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-30: Q1 2026 net profit of TRY 2.9 billion, down from TRY 3.1 billion in Q1 2025. [[sources/2026-04-30-reuters-tskb-q1-net-profit-down-at-2-9-bln-lira-yoy-ba8d4f85]]
 - 2026-04-30: Maintains 2026 guidance: low-teens FX-adjusted loan growth, ~4.5% NIM, above-average CPI OPEX growth. [[sources/2026-04-30-reuters-tskb-maintains-2026-guidance-fbd41a7f]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

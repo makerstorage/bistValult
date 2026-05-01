@@ -1,6 +1,6 @@
 # bistValult
 
-LLM-maintained investment research wiki for Borsa Istanbul companies. Raw data flows in via CLI fetchers and cron; Claude maintains the wiki.
+LLM-maintained investment research wiki for Borsa Istanbul companies. Raw data flows in via CLI fetchers and cron; an LLM agent maintains the wiki.
 
 ---
 
@@ -17,136 +17,163 @@ Three strict layers:
 |---|---|---|---|
 | Raw inputs | `raw_sources/` | CLI / user | Immutable. Never edited after write. |
 | Wiki | `wiki/` | LLM agents | Derived from raw inputs only. |
-| Config | `docs/`, `templates/` | User + LLM | Co-evolved as conventions emerge. |
+| Config | `docs/`, `templates/`, `.claude/agents/` | User + LLM | Co-evolved as conventions emerge. |
+
+The LLM-driven steps run through one of two parallel back-ends:
+
+- **OpenRouter (or any OpenAI-compatible API)** — used by the cron / scripted path. No Claude Code required.
+- **Claude Code** — still available for interactive use (slash commands, ad-hoc queries, lint passes, the `tvscreener` MCP).
 
 ---
 
 ## Setup
 
-**Requirements:** Python ≥ 3.11, [uv](https://github.com/astral-sh/uv), Claude Code CLI.
+**Requirements:**
+
+- Python ≥ 3.11
+- [uv](https://github.com/astral-sh/uv) (project package manager)
+- An OpenRouter account, **or** an OpenAI API key — only needed for the LLM-driven commands (`news`, `kap`, `compact`)
+- Claude Code CLI (optional — only for interactive use)
+
+**Install dependencies:**
 
 ```bash
-# Install Python dependencies
-uv sync
+uv sync --extra dev
+```
 
-# Verify CLI works
-python -m cli.fetch_news --help
-python -m cli.fetch_company_meta --help
+**Configure the LLM provider:**
+
+```bash
+cp .env.example .env
+# Edit .env and set OPENROUTER_API_KEY (or OPENAI_API_KEY)
+```
+
+`.env` keys (defaults shown):
+
+| Variable | Default | Notes |
+|---|---|---|
+| `OPENROUTER_API_KEY` | — | Required unless `OPENAI_API_KEY` is set |
+| `BISTVALULT_MODEL` | `anthropic/claude-sonnet-4.5` | Any OpenRouter / OpenAI model id |
+| `BISTVALULT_BASE_URL` | `https://openrouter.ai/api/v1` | Use `https://api.openai.com/v1` for OpenAI direct |
+| `BISTVALULT_MAX_ITERATIONS` | `60` | Hard cap on agent loop turns per run |
+| `BISTVALULT_MAX_INPUT_TOKENS` | `180000` | Token budget for the message history |
+
+**Verify the install:**
+
+```bash
+uv run pytest -q                     # 18 unit tests, no API key required
+uv run python -m cli.fetch_news --help
 ```
 
 ---
 
-## Pipeline commands
+## Pipeline commands (cron / scripted, no Claude Code)
 
-All pipeline commands run as Claude Code slash commands — either manually in a Claude session or unattended via cron.
+All four pipeline commands run through `cli.run`. Each mirrors what the matching `.claude/commands/*.md` slash command did under Claude Code, but talks to OpenRouter (or any OpenAI-compatible endpoint) instead.
 
-### `/ingest-news`
+Every command is **idempotent** — re-running back-to-back produces zero new wiki diffs.
 
-Fetches the latest news articles for tracked BIST companies and ingests them into the wiki.
+### `uv run python -m cli.run news`
 
-**What it does:**
-1. Runs `python -m cli.fetch_news --since=last` — fetches new articles, deduplicates via `cli/state/news-seen.json`, writes raw files to `raw_sources/news/`.
-2. Passes new file paths to the `graph-ingestor` subagent.
-3. The ingestor creates source pages in `wiki/sources/`, updates company/sector/theme pages, and merges or mints claim pages.
+Fetches the latest BIST news articles and ingests them into the wiki.
 
-**Run manually:**
+1. `cli.fetch_news --since=last` — fetches new articles, deduplicates via `cli/state/news-seen.json`, writes raw files to `raw_sources/news/`. **Deterministic, no LLM.**
+2. If new files exist, calls the `graph-ingestor` agent (loaded from `.claude/agents/graph-ingestor.md`) over the OpenRouter API. The agent creates source pages in `wiki/sources/`, updates company / sector / theme pages, and merges or mints claim pages.
+3. Appends an entry to `wiki/log.md` and prints an `INGEST SUMMARY` block to stdout.
+
+**Cost:** ~$0.05–$0.15 per article on `anthropic/claude-sonnet-4.5`. Free when there are no new articles.
+
+### `uv run python -m cli.run kap`
+
+Same as `news` but for **KAP filings** (Turkish public-disclosure platform). KAP filings are primary-source disclosures and override news on contradictions.
+
+1. `cli.fetch_kap --since=last` — fetches new disclosures, dedup via `cli/state/kap-seen.json`, writes to `raw_sources/kap_filings/`.
+2. If new files exist, dispatches the `graph-ingestor` agent (same agent as `news`; classification differs by `source_kind`).
+3. Logs and prints `INGEST SUMMARY`.
+
+### `uv run python -m cli.run companies [--ticker TICKER] [--all] [--force]`
+
+Refreshes company metadata (name, sector, aliases) used for entity matching during news ingestion. **Deterministic, no LLM, no cost.**
+
+```bash
+uv run python -m cli.run companies --ticker GARAN     # one ticker
+uv run python -m cli.run companies --all --force      # full refresh of universe.txt
 ```
-/ingest-news
-```
 
-**Cron (every 6 hours):**
-```cron
-0 */6 * * * cd /path/to/bistValult && claude -p "/ingest-news" >> logs/ingest-news.log 2>&1
-```
+Writes `raw_sources/company_meta/<TICKER>.json`. Does **not** create wiki pages — those are minted by the `graph-ingestor` when news references the ticker.
 
-**Output:** Appends a structured entry to `wiki/log.md`. Prints an `INGEST SUMMARY` block to stdout (captured by cron log).
+### `uv run python -m cli.run compact`
+
+Weekly maintenance — keeps the wiki bounded without losing information. Calls the `compactor` agent (`.claude/agents/compactor.md`).
+
+Three jobs in order:
+
+1. **Source pruning** — deletes `wiki/sources/*.md` older than 30 days. Skips any source page that is the sole citation for a claim.
+2. **Claim consolidation** — merges duplicate claims (same ticker, same topic, same direction) into one canonical file with merged evidence.
+3. **Company page compaction** — moves events older than 30 days from `## Events (last 30 days)` into a summarised `## History` paragraph.
+
+Logs and prints `COMPACT SUMMARY`. Heavier than a single ingest — typically $0.30–$1 per weekly run.
 
 ---
 
-### `/ingest-companies`
+## Manual / debugging commands
 
-Refreshes company metadata (name, sector, aliases, market cap) for tickers in the tracked universe. Used for entity matching during news ingestion.
+### `uv run python -m cli.orchestrators.dry_run <raw_path> [<raw_path> ...]`
 
-**What it does:**
-1. Runs `python -m cli.fetch_company_meta --ticker <TICKER>` (single ticker) or `--all --force` (full refresh).
-2. Writes `raw_sources/company_meta/<TICKER>.json` files.
-3. Does **not** update `wiki/companies/` pages — that happens during news ingestion when a source references the ticker.
+Run the `graph-ingestor` agent against one or more hand-picked raw files, bypassing the fetcher. Useful for testing changes to the agent prompt, verifying a single article ingests correctly, or capping cost during the first end-to-end run.
 
-**Run for one ticker:**
-```
-/ingest-companies --ticker GARAN
+```bash
+uv run python -m cli.orchestrators.dry_run \
+  raw_sources/news/2026-04-17-reuters-ulusoy-elektrik-says-it-is-to-pay-competition-board-fine-of-f47ec4b7.md
 ```
 
-**Run for all tickers:**
-```
-/ingest-companies --all --force
-```
+Prints `[runner] iter N — calling model …` lines on stderr so you can see how many turns it took.
 
-**Cron (weekly, Sunday midnight):**
-```cron
-0 0 * * 0 cd /path/to/bistValult && claude -p "/ingest-companies" >> logs/ingest-companies.log 2>&1
-```
+### `uv run pytest`
+
+Runs the unit-test suite. No API key required — tests cover tool-surface security (path allowlist, edit semantics, delete whitelist), prompt loading, and summary-block parsing.
+
+### `uv run python -m cli.fetch_news --since=last`
+
+Run any fetcher directly. Prints absolute paths of newly-written files to stdout. Same exit-code contract as the orchestrators (0 on success, 0 on no-new-data, non-zero on hard failure).
 
 ---
 
-### `/compact`
+## Interactive commands (Claude Code, optional)
 
-Weekly maintenance — keeps the wiki bounded and clean without losing information.
+Slash commands continue to work inside an interactive `claude` session. They use Claude Code's own model and tools (Anthropic API), independent of the OpenRouter setup above.
 
-**What it does (three jobs in order):**
+| Slash command | Equivalent Python invocation |
+|---|---|
+| `/ingest-news` | `uv run python -m cli.run news` |
+| `/ingest-kap` | `uv run python -m cli.run kap` |
+| `/ingest-companies` | `uv run python -m cli.run companies` |
+| `/compact` | `uv run python -m cli.run compact` |
 
-1. **Source pruning** — deletes `wiki/sources/` pages older than 30 days. Safety check: never deletes a source page that is the sole citation for any claim.
-2. **Claim consolidation** — merges duplicate claim pages (same ticker, same topic) into a single canonical claim with all evidence combined. Rewires backlinks in company pages before deleting redundant files.
-3. **Company page compaction** — moves events older than 30 days from `## Events (last 30 days)` into a summarised `## History` paragraph. Migrates old-format `## Events` sections to the new rolling-window format.
+Use slash commands for ad-hoc work, the `tvscreener` MCP, manual file ingestion, queries, and lint passes. Use the Python entry points for cron and CI.
 
-**Run manually:**
-```
-/compact
-```
+### Manual file ingestion
 
-**Cron (weekly, Sunday 02:00 — after `/ingest-companies`):**
-```cron
-0 2 * * 0 cd /path/to/bistValult && claude -p "/compact" >> logs/compact.log 2>&1
-```
-
-**Output:** Appends a `compact` entry to `wiki/log.md`. Prints a `COMPACT SUMMARY` block to stdout.
-
----
-
-## Manual workflows
-
-### Ingest a file you dropped in
-
-Drop a file into the appropriate `raw_sources/<kind>/` folder, then start a Claude session and describe what you dropped. Claude will:
-
-1. Read the raw file.
-2. Discuss the key takeaways with you.
-3. Write a `wiki/sources/` page, update affected company/sector/theme/claim pages, detect contradictions, update `wiki/index.md`, and append to `wiki/log.md`.
+Drop a file into the matching `raw_sources/<kind>/` folder, then describe it in a Claude session. The agent reads the file, discusses takeaways with you, then updates `wiki/`.
 
 ### Query the wiki
 
-Ask Claude a question in a session — e.g. _"Which BIST names benefit from rate cuts?"_ or _"What's the current picture on EREGL?"_
-
-Claude reads `wiki/index.md` first, drills into relevant pages, and synthesises an answer with citations. If the answer is substantial (a comparison, thesis update, or investability assessment) it files it back as a `decisions/` or `claims/` page so the analysis is not lost.
+Ask a question in a Claude session — e.g. _"Which BIST names benefit from rate cuts?"_ or _"What's the current picture on EREGL?"_ The agent reads `wiki/index.md` first, drills in, and synthesises an answer with citations. Substantial answers are filed back as `decisions/` or `claims/` pages.
 
 ### Lint (health check)
 
-Ask Claude to run a lint pass:
-
-```
-Run a lint pass on the wiki.
-```
-
-Claude checks for: stale data past freshness thresholds, orphan pages, claims with no thesis, contradictions without resolution, decisions past `valid_until`, and concepts mentioned in multiple pages but lacking their own page. It reports findings and waits for your confirmation before fixing anything.
+Ask Claude to run a lint pass. It checks for stale data, orphan pages, contradictions, expired decisions, and concepts mentioned but lacking pages. Reports findings; never fixes without your confirmation.
 
 ---
 
 ## Agent inventory
 
-| Agent | File | Invoked by | Purpose |
+| Agent | Prompt file | Invoked by | Purpose |
 |---|---|---|---|
-| `graph-ingestor` | `.claude/agents/graph-ingestor.md` | `/ingest-news` (auto), manual ingest | Writes all wiki updates from raw sources |
-| `compactor` | `.claude/agents/compactor.md` | `/compact` | Prunes, merges, and compacts the wiki weekly |
+| `graph-ingestor` | `.claude/agents/graph-ingestor.md` | `cli.run news`, `cli.run kap`, manual ingest | Writes all wiki updates from raw sources |
+| `compactor` | `.claude/agents/compactor.md` | `cli.run compact` | Prunes, merges, and compacts the wiki weekly |
+
+The Python runner loads each agent's `.md` body verbatim as the LLM system prompt, so the same prompt source is authoritative for both back-ends.
 
 **Agents not yet built** (see `docs/gapanalises.md`):
 
@@ -158,21 +185,48 @@ Claude checks for: stale data past freshness thresholds, orphan pages, claims wi
 
 ---
 
-## Recommended cron schedule
+## Recommended cron schedule (macOS launchd)
+
+Each plist points at the absolute `uv` binary and the project root. Replace the paths with your own.
+
+**News — every 6 hours:**
+
+```xml
+<key>ProgramArguments</key>
+<array>
+  <string>/opt/homebrew/bin/uv</string>
+  <string>run</string>
+  <string>--project</string><string>/Users/nuri/Code/bistValult</string>
+  <string>python</string><string>-m</string><string>cli.run</string><string>news</string>
+</array>
+<key>StartCalendarInterval</key>
+<array>
+  <dict><key>Hour</key><integer>0</integer></dict>
+  <dict><key>Hour</key><integer>6</integer></dict>
+  <dict><key>Hour</key><integer>12</integer></dict>
+  <dict><key>Hour</key><integer>18</integer></dict>
+</array>
+<key>StandardOutPath</key><string>/Users/nuri/Code/bistValult/logs/ingest-news.log</string>
+<key>StandardErrorPath</key><string>/Users/nuri/Code/bistValult/logs/ingest-news.log</string>
+```
+
+**KAP — every 30 minutes during trading hours:** same shape, swap `news` → `kap`.
+
+**Companies — Sunday midnight:** swap to `companies` with optional `--all --force`.
+
+**Compact — Sunday 02:00:** swap to `compact`.
+
+If you prefer plain cron over launchd:
 
 ```cron
 # bistValult — full pipeline
-# News: every 6 hours
-0 */6 * * *  cd /path/to/bistValult && claude -p "/ingest-news"       >> logs/ingest-news.log 2>&1
-
-# Company metadata: weekly, Sunday midnight
-0 0   * * 0  cd /path/to/bistValult && claude -p "/ingest-companies"  >> logs/ingest-companies.log 2>&1
-
-# Compaction: weekly, Sunday 02:00
-0 2   * * 0  cd /path/to/bistValult && claude -p "/compact"           >> logs/compact.log 2>&1
+0 */6 * * *  cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run news      >> logs/ingest-news.log 2>&1
+*/30 9-18 * * 1-5  cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run kap >> logs/ingest-kap.log  2>&1
+0   0 * * 0  cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run companies >> logs/ingest-companies.log 2>&1
+0   2 * * 0  cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run compact   >> logs/compact.log 2>&1
 ```
 
-Create the log directory first:
+Create the log directory once:
 
 ```bash
 mkdir -p logs
@@ -203,13 +257,14 @@ wiki/
 ```
 raw_sources/
   news/             # fetched news articles (fetch_news.py)
+  kap_filings/      # KAP primary disclosures (fetch_kap.py)
   company_meta/     # TICKER.json registry (fetch_company_meta.py)
-  prices/           # price snapshots (fetch_prices.py — not yet built)
-  financials/       # structured financials (fetch_financials.py — not yet built)
-  kap_filings/      # KAP primary disclosures (fetch_kap.py — not yet built)
-  analyst_notes/    # broker research (fetch_analyst_notes.py — not yet built)
-  macro/            # CBRT rates, CPI, FX (fetch_macro.py — not yet built)
-  sector_reports/   # sector research (fetch_sector_reports.py — not yet built)
+  universe.txt      # tracked tickers, one per line
+  prices/           # price snapshots (fetcher not yet built)
+  financials/       # structured financials (fetcher not yet built)
+  analyst_notes/    # broker research (fetcher not yet built)
+  macro/            # CBRT rates, CPI, FX (fetcher not yet built)
+  sector_reports/   # sector research (fetcher not yet built)
 ```
 
 ---

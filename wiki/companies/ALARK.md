@@ -30,9 +30,13 @@ Fact: Alarko Holding A.S. is a Turkish holding company. [unsourced — inferred 
 | P/B | Not available | | |
 | Net debt / EBITDA | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-29: Updated dividend proposal to gross TRY 3.2 per share (net TRY 2.7 per share) for fiscal year 2025. [[sources/2026-04-29-reuters-alarko-holding-says-it-updates-dividend-amount-per-share-now-e6ad878d]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

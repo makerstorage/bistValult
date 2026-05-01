@@ -47,7 +47,17 @@ For each path **P**:
 
 ### 3. Classify
 
-Assign a news subkind: one of `kap-filing`, `market-news`, `analyst-note`, `opinion`, `other`. Record as `source_subkind` on the source page frontmatter.
+Branch on the raw frontmatter's `source_kind`:
+
+- **`source_kind: "news"`** — assign a news subkind: one of `kap-filing`, `market-news`, `analyst-note`, `opinion`, `other`. Record as `source_subkind` on the source page frontmatter.
+- **`source_kind: "kap_filing"`** — map the raw `kap_disclosure_type` to a `source_subkind`:
+  - `ODA` → `kap-special-situation`
+  - `FR` → `kap-financial-report`
+  - `CA` → `kap-corporate-action`
+  - anything else → `kap-other`
+- **Unknown `source_kind`** — set `source_subkind: "other"` and `needs_review: true`.
+
+**KAP filings are primary-source disclosures.** Treat them with higher authority than news coverage of the same event. If a KAP filing contradicts an existing news-derived claim, the KAP filing wins — record the disagreement in the company page's `## Contradictions` section (and on the affected claim) with the KAP source as the prevailing one. The body text is in Turkish; entity matching uses the Turkish aliases already present in `raw_sources/company_meta/*.json`.
 
 ### 4. Identify entities
 
@@ -100,6 +110,8 @@ When updating an **existing** company page apply these rules in order:
 4. **`## Current snapshot` section** — if present, overwrite the relevant metric lines with the latest values from this source. If absent, do not create it; the compactor adds it during the first compaction run.
 
 When writing a **new** company page from the template, the template already contains `## Events (last 30 days)` and `## History` — populate only the former; leave `## History` as the template placeholder.
+
+**KAP financial-report filings (`source_kind: "kap_filing"` + `kap_disclosure_type: "FR"`):** the raw frontmatter carries `kap_period` (e.g. `3AB` = Q1 cumulative, `6AB` = H1, `9AB` = 9-month cumulative, `12AB` = annual) and `kap_year`. When extracting financial line items into the company page's `## Financials` table, record the period/year alongside each value (e.g. `Net income | 5.2bn TRY | 2026 Q1 (FR 3AB)`). This is the structured signal news summaries lacked — preserve it.
 
 ### 7. Merge-not-Mint claims
 

@@ -29,9 +29,13 @@ Fact: AFYON is a Turkish cement producer based in Afyonkarahisar. [unsourced —
 | Q1 2026 revenue | TRY 926.1 million | 2026-03-31 | [[sources/2026-04-28-reuters-afyon-cimento-q1-net-result-turns-to-loss-of-73-4-mln-lira-y-52626a50]] |
 | Q1 2025 revenue | TRY 898.0 million | 2025-03-31 | [[sources/2026-04-28-reuters-afyon-cimento-q1-net-result-turns-to-loss-of-73-4-mln-lira-y-52626a50]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-28: Q1 2026 — net result swung to a loss of TRY 73.4 million from a profit of TRY 115.4 million in Q1 2025, while revenue grew marginally +3.1% YoY. [[sources/2026-04-28-reuters-afyon-cimento-q1-net-result-turns-to-loss-of-73-4-mln-lira-y-52626a50]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

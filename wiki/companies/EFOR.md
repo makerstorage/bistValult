@@ -27,9 +27,13 @@ Fact: EFOR (Efor Yatırım Sanayi Ticaret) has mineral exploration activities; r
 | Revenue (TTM) | Not available | | |
 | Net income (TTM) | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-22: MAPEG approved exploration license projects for seven mining sites; legal framework for mineral exploration activities established. [[sources/2026-04-22-reuters-efor-yatirim-sanayi-ticaret-says-mapeg-approves-exploration-631d922d]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

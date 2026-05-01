@@ -30,9 +30,13 @@ Fact: Gen Ilac ve Saglik Urunleri Sanayi ve Ticaret A.S. is a Turkish pharmaceut
 | P/B | Not available | | |
 | Net debt / EBITDA | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-29: Azerbaijan pharmaceutical production facility targeted to be commissioned in October 2026. Aims for Ankara facility export share to reach 70%. Performance exceeds 30% TRY-based growth target for 2026. SUL-238 project Phase-2 commenced. GN-037 (psoriasis) Phase-2 completed with positive results. [[sources/2026-04-29-reuters-gen-ilac-says-pharmaceutical-production-facility-in-azerbaij-7ccc3659]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

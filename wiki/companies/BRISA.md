@@ -30,9 +30,13 @@ Fact: Brisa Bridgestone Sabanci Lastik Sanayi ve Ticaret A.S. is a tire manufact
 | P/B | Not available | | |
 | Net debt / EBITDA | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-29: Court case against BRISA dismissed due to withdrawal by the opposing party. [[sources/2026-04-30-reuters-brisa-bridgestone-sabanci-says-court-dismisses-case-against-3406e5c0]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

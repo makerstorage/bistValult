@@ -3,3 +3,7 @@ Name: bistvalult-cli
 Version: 0.1.0
 Summary: Data fetchers for the bistValult research wiki
 Requires-Python: >=3.11
+Requires-Dist: openai>=1.50
+Requires-Dist: python-dotenv>=1.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"

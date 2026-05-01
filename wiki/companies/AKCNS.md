@@ -27,10 +27,14 @@ Fact: Akcansa Cimento Sanayi ve Ticaret A.S. is a Turkish cement producer. [unso
 | Q1 Net loss | TRY 324.2 million | 2026-03-31 | [[sources/2026-04-30-reuters-akcansa-cimento-q1-loss-widens-to-324-2-mln-lira-yoy-99d9d6df]] |
 | Q1 Revenue | TRY 5.61 billion | 2026-03-31 | [[sources/2026-04-30-reuters-akcansa-cimento-q1-loss-widens-to-324-2-mln-lira-yoy-99d9d6df]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-24: Proposed cash dividend of TRY 1.88 gross (TRY 1.60 net) per share from FY 2025 profit, pending general assembly approval. [[sources/2026-04-24-reuters-akcansa-cimento-says-it-proposes-to-pay-cash-dividend-at-gro-42308c20]]
 - 2026-04-30: Q1 2026 net loss widened to TRY 324.2 million from TRY 231.5 million in Q1 2025. Revenue essentially flat at TRY 5.61 billion vs TRY 5.62 billion. [[sources/2026-04-30-reuters-akcansa-cimento-q1-loss-widens-to-324-2-mln-lira-yoy-99d9d6df]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

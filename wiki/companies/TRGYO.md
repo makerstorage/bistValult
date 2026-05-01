@@ -28,9 +28,14 @@ Fact: TRGYO (Torunlar REIT) is a Turkish real estate investment trust. [unsource
 | Revenue (TTM) | Not available | | |
 | Net income (TTM) | Not available | | |
 
-## Events
+## Events (last 30 days)
 
+- 2026-04-14: Buys land in Samsun for 805 million lira; valuation company sets land value at 810 million lira (plus VAT) [[sources/2026-04-14-reuters-torunlar-reit-says-it-buys-land-in-samsun-for-805-mln-lira-33d9db88]]
 - 2026-04-22: Proposed cash dividend of TRY 5.00 gross per share (TRY 5.00 net) from FY 2025 profit, pending general assembly approval. [[sources/2026-04-22-reuters-torunlar-reit-says-it-proposes-to-pay-cash-dividend-at-gross-799e5840]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

@@ -27,10 +27,14 @@ Fact: ORGE is a Turkish electrical contracting and energy company that undertake
 | Revenue (TTM) | Not available | | |
 | Net income (TTM) | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-24: Signed a contract worth TRY 286.1 million plus VAT for the Mandarin Oriental Etiler project; cumulative project value reaches TRY 714 million plus VAT. [[sources/2026-04-24-reuters-orge-elektrik-says-it-signs-contract-worth-286-1-million-lir-c1dc907e]]
 - 2026-04-24: Disposed of 1.98 million treasury shares (acquired via buyback program) at TRY 80/share to foreign institutional investors; company no longer holds treasury shares. [[sources/2026-04-24-reuters-orge-enerji-says-it-sells-1-98-mln-shares-acquired-from-buyb-0fa42213]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

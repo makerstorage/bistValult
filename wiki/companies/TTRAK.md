@@ -30,9 +30,13 @@ Fact: Turk Traktor ve Ziraat Makineleri A.S. manufactures and sells agricultural
 | 2026 Export tractor guidance | 11,000–13,500 units | 2026-04-30 | [[sources/2026-04-30-reuters-turk-traktor-q1-net-result-turns-to-loss-of-1-3-bln-lira-yoy-b9458561]] |
 | 2026 Capex guidance | USD 60–70 million | 2026-04-30 | [[sources/2026-04-30-reuters-turk-traktor-q1-net-result-turns-to-loss-of-1-3-bln-lira-yoy-b9458561]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-30: Q1 2026 net loss of TRY 1.3 billion versus net profit of TRY 309.2 million in Q1 2025; revenue down ~39% YoY to TRY 10.1 billion. Guidance revised down materially. [[sources/2026-04-30-reuters-turk-traktor-q1-net-result-turns-to-loss-of-1-3-bln-lira-yoy-b9458561]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

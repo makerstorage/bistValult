@@ -31,9 +31,13 @@ Fact: Turkiye Garanti Bankasi A.S. (Garanti BBVA) is one of Turkey's largest pri
 | Capital adequacy ratio | 16.2% | 2026-03-31 | [[sources/2026-04-29-quartr-garan-q1-2026-net-income-reached-tl-33-6-billion-with-robust-75327cc7]] (AI; needs_review) |
 | Loans / total assets | 56% | 2026-03-31 | [[sources/2026-04-29-quartr-garan-q1-2026-net-income-reached-tl-33-6-billion-with-robust-75327cc7]] (AI; needs_review) |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-29: Q1 2026 net income of TRY 33.6 billion (or TRY 34 billion per transcript summary), up 32% YoY. NIM at 6.1%, ROAE at 30.3%. TL loan growth guidance raised for 2026. Sale of Romanian subsidiary expected to boost capital. [[sources/2026-04-29-quartr-garan-q1-2026-net-income-reached-tl-33-6-billion-with-robust-75327cc7]] [[sources/2026-04-29-quartr-garan-net-income-up-32-yoy-nim-at-6-1-and-tl-loan-growth-gui-c6b05d3a]] [[sources/2026-04-29-quartr-garan-q1-saw-robust-profit-growth-and-sector-leading-margins-0f868f59]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

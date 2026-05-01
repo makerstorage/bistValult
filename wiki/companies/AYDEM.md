@@ -27,9 +27,13 @@ Fact: AYDEM (Aydem Yenilenebilir Enerji) is a Turkish renewable energy company. 
 | Revenue (TTM) | Not available | | |
 | Net income (TTM) | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-22: Appointed Ayca Akgun Kulak as Financial Affairs Director. [[sources/2026-04-22-reuters-aydem-yenilebilir-enerji-appoints-ayca-akgun-kulak-as-financ-8f9c3997]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

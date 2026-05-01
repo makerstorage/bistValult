@@ -28,7 +28,7 @@ The docs define 7 ingest kinds. Only 2 have fetchers and slash commands:
 | `company_meta` | `fetch_company_meta.py` ✓ | `ingest-companies.md` ✓ | Yes |
 | `prices` | — | — | **Empty** |
 | `financials` | — | — | **Empty** |
-| `kap_filings` | — | — | **Empty** |
+| `kap_filings` | `fetch_kap.py` ✓ | `ingest-kap.md` ✓ | Yes (live; daily cron) |
 | `analyst_notes` | — | — | **Empty** |
 | `macro` | — | — | **Empty** |
 | `sector_reports` | — | — | **Empty** |

@@ -29,9 +29,13 @@ Fact: Emlak Konut Gayrimenkul Yatirim Ortakligi (trading as DMLKT) is a Turkish 
 | Q1 Land sales revenue | TRY 5.5 billion (25 plots) | 2026-03-31 | [[sources/2026-04-29-reuters-emlak-konut-reit-says-total-sales-revenue-from-sale-of-resid-0e9d68a2]] |
 | Q1 Total sales revenue | TRY 29.9 billion | 2026-03-31 | [[sources/2026-04-29-reuters-emlak-konut-reit-says-total-sales-revenue-from-sale-of-resid-0e9d68a2]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-29: Q1 2026 total sales revenue from residential units and land was TRY 29.9 billion. Foreign national sales: 21 units for TRY 305.8 million (excl. VAT) (~1.3% of residential units). [[sources/2026-04-29-reuters-emlak-konut-reit-says-total-sales-revenue-from-sale-of-resid-0e9d68a2]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

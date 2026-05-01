@@ -30,9 +30,13 @@ Fact: IC Enterra Yenilenebilir Enerji A.S. is a Turkish renewable energy company
 | P/B | Not available | | |
 | Net debt / EBITDA | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-30: Received positive EIA decision for Akcahalil storage-integrated wind power project (49.4 MW installed, 45 MW output, 45 MW/45 MWh storage) in Tekirdag. Three other projects still in EIA process. [[sources/2026-04-30-reuters-ic-enterra-yenilenebilir-says-it-receives-positive-environme-89bbbee3]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

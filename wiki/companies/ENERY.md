@@ -29,9 +29,13 @@ Fact: ENERY (Enerya Enerji) is a Turkish energy company. [unsourced — inferred
 | FY 2025 revenue | TRY 32.8 billion | 2025-12-31 | [[sources/2026-04-28-reuters-enerya-enerji-fy-net-profit-up-at-4-7-bln-lira-yoy-302a5d7d]] |
 | FY 2024 revenue | TRY 30.8 billion | 2024-12-31 | [[sources/2026-04-28-reuters-enerya-enerji-fy-net-profit-up-at-4-7-bln-lira-yoy-302a5d7d]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-28: FY 2025 results — net profit TRY 4.7 billion (+27% YoY), revenue TRY 32.8 billion (+6.5% YoY). Net profit growing faster than revenue, suggesting margin improvement. [[sources/2026-04-28-reuters-enerya-enerji-fy-net-profit-up-at-4-7-bln-lira-yoy-302a5d7d]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

@@ -27,9 +27,13 @@ Fact: Tukas Gida Sanayi ve Ticaret A.S. is a Turkish food manufacturer. [unsourc
 | Q1 Net profit | TRY 132.9 million | 2026-03-31 | [[sources/2026-04-30-reuters-tukas-q1-net-profit-drops-to-132-9-mln-lira-yoy-1835eae4]] |
 | Q1 Revenue | TRY 2.56 billion | 2026-03-31 | [[sources/2026-04-30-reuters-tukas-q1-net-profit-drops-to-132-9-mln-lira-yoy-1835eae4]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-30: Q1 2026 net profit of TRY 132.9 million, down ~79% from TRY 638.8 million in Q1 2025. Revenue slightly down to TRY 2.56 billion from TRY 2.62 billion. [[sources/2026-04-30-reuters-tukas-q1-net-profit-drops-to-132-9-mln-lira-yoy-1835eae4]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

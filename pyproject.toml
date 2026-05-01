@@ -3,7 +3,15 @@ name = "bistvalult-cli"
 version = "0.1.0"
 description = "Data fetchers for the bistValult research wiki"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "openai>=1.50",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
 
 [build-system]
 requires = ["setuptools>=61"]

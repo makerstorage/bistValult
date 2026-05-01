@@ -28,10 +28,14 @@ Fact: CLEBI is a Turkish aviation ground handling and cargo services company ope
 | Tanzanian unit asset share | ~0.5% of consolidated | 2025-12-31 | [[sources/2026-04-24-reuters-celebi-hava-servisi-says-it-will-exit-tanzania-operations-af-0c9c4874]] |
 | Tanzanian unit net profit impact | ~2.1% loss drag | 2025-12-31 | [[sources/2026-04-24-reuters-celebi-hava-servisi-says-it-will-exit-tanzania-operations-af-0c9c4874]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-24: Will exit Tanzania operations (Celebi Tanzania Aviation Services at Julius Nyerere International Airport, Dar es Salaam) following concession expiry. Exit removes a unit that is a net loss drag (~2.1% of net profit impact). [[sources/2026-04-24-reuters-celebi-hava-servisi-says-it-will-exit-tanzania-operations-af-0c9c4874]]
 - 2026-04-24: Confirmed presence across Europe, Asia and Africa; recent entry into Kenyan market. [[sources/2026-04-24-reuters-celebi-hava-servisi-says-it-will-exit-tanzania-operations-af-0c9c4874]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

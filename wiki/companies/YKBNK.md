@@ -28,9 +28,13 @@ Fact: YKBNK (Yapı Kredi) is a major Turkish private bank. [[sources/2026-04-29-
 | NIM | Expanded YoY | 2026-03-31 | [[sources/2026-04-29-quartr-ykbnk-q1-2026-net-profit-more-than-doubled-year-over-year-dr-b04d1b17]] (AI-generated; needs_review) |
 | CET1 | Solid (exact value not available) | 2026-03-31 | [[sources/2026-04-29-quartr-ykbnk-q1-2026-net-profit-more-than-doubled-year-over-year-dr-b04d1b17]] (AI-generated; needs_review) |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-29: Q1 2026 net profit surged 78% YoY, with NIM expansion, robust trading income, and resilient asset quality. Management supporting full-year guidance despite macro volatility. [[sources/2026-04-29-quartr-ykbnk-q1-2026-net-profit-more-than-doubled-year-over-year-dr-b04d1b17]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

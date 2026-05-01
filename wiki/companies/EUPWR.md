@@ -27,11 +27,15 @@ Fact: EUPWR (Europower Enerji) is a Turkish energy and automation technology com
 | Revenue (TTM) | Not available | | |
 | Net income (TTM) | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-24: Won AYEDAS tender with contract base value of $1.7 million. [[sources/2026-04-24-reuters-europower-enerji-says-it-wins-ayedas-tender-worth-1-7-mln-5f315877]]
 - 2026-04-24: Won TD25001931-TRAFO HR KR ALIMI-MG2 tender from Başkent Elektrik with contract base value of $2.3 million; contract signing with BEDAS on 2026-04-27. [[sources/2026-04-24-reuters-europower-enerji-says-it-wins-tender-from-baskent-elektrik-c-dc800509]]
 - 2026-04-28: Unit Peak PV Solar won a TEIAS tender worth TRY 331.3 million. [[sources/2026-04-28-reuters-europower-enerji-says-unit-wins-teias-tender-worth-331-3-mln-f863e6cc]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

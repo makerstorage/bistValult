@@ -29,9 +29,13 @@ Fact: ULUUN (Ulusoy Un) is a Turkish flour milling company. [unsourced — infer
 | FY 2025 revenue | TRY 66.94 billion | 2025-12-31 | [[sources/2026-04-23-reuters-ulusoy-un-fy-loss-shrinks-to-130-9-mln-lira-yoy-438c3960]] |
 | FY 2024 revenue | TRY 64.04 billion | 2024-12-31 | [[sources/2026-04-23-reuters-ulusoy-un-fy-loss-shrinks-to-130-9-mln-lira-yoy-438c3960]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-23: FY 2025 — net loss narrowed to TRY 130.9 million from TRY 210.8 million in FY 2024 (-38% YoY); revenue grew +4.5% YoY. [[sources/2026-04-23-reuters-ulusoy-un-fy-loss-shrinks-to-130-9-mln-lira-yoy-438c3960]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

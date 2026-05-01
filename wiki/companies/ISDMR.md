@@ -29,9 +29,13 @@ Fact: ISDMR (Isdemir) is a Turkish steel producer based in Iskenderun. [unsource
 | Q1 2026 revenue | TRY 31.7 billion | 2026-03-31 | [[sources/2026-04-29-reuters-isdemir-q1-net-profit-up-at-1-5-bln-lira-yoy-0a7c1d34]] |
 | Q1 2025 revenue | TRY 26.9 billion | 2025-03-31 | [[sources/2026-04-29-reuters-isdemir-q1-net-profit-up-at-1-5-bln-lira-yoy-0a7c1d34]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-29: Q1 2026 — net profit TRY 1.5 billion (+50% YoY), revenue TRY 31.7 billion (+18% YoY). [[sources/2026-04-29-reuters-isdemir-q1-net-profit-up-at-1-5-bln-lira-yoy-0a7c1d34]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

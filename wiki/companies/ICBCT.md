@@ -29,10 +29,14 @@ Fact: ICBC Turkey Bank A.S. is a Turkish bank, subsidiary of Industrial and Comm
 | Q1 Net commission income | TRY 203.6 million | 2026-03-31 | [[sources/2026-04-29-reuters-icbc-turkey-q1-net-result-turns-to-profit-of-877-mln-lira-yo-f85165ad]] |
 | End-Q1 Loans | TRY 50.2 billion | 2026-03-31 | [[sources/2026-04-29-reuters-icbc-turkey-q1-net-result-turns-to-profit-of-877-mln-lira-yo-f85165ad]] |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-29: Q1 2026 net profit turned to TRY 877 million from net loss of TRY 408.2 million in Q1 2025. [[sources/2026-04-29-reuters-icbc-turkey-q1-net-result-turns-to-profit-of-877-mln-lira-yo-f85165ad]]
 - 2026-04-30: Board decided not to pay a dividend for fiscal year 2025. [[sources/2026-04-30-reuters-icbc-turkey-bank-says-it-decides-not-to-pay-dividend-for-202-add7fa85]]
+
+## History
+
+_None yet._
 
 ## Exposure
 

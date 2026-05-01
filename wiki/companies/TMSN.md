@@ -27,9 +27,13 @@ Fact: TMSN (TÃ¼mosan) is a Turkish motor and tractor manufacturer. [unsourced â€
 | Revenue (TTM) | Not available | | |
 | Net income (TTM) | Not available | | |
 
-## Events
+## Events (last 30 days)
 
 - 2026-04-28: Company issued a statement denying reports of a production halt and unpaid leave; stated operations continue uninterrupted. [[sources/2026-04-28-reuters-tumosan-says-its-operations-continue-uninterrupted-denies-pr-fc9abdd6]]
+
+## History
+
+_None yet._
 
 ## Exposure
 
