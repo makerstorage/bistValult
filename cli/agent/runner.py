@@ -31,7 +31,7 @@ from cli.lib import registry
 
 # A summary block runs from the literal header line to the end of the message.
 SUMMARY_RE = re.compile(
-    r"^(INGEST SUMMARY|COMPACT SUMMARY)\b.*?(?=\Z)",
+    r"^(INGEST SUMMARY|COMPACT SUMMARY|THESIS SUMMARY)\b.*?(?=\Z)",
     re.MULTILINE | re.DOTALL,
 )
 

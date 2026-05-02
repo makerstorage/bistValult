@@ -24,6 +24,7 @@ tags: []
 5. **Track contradictions.** When a new source disagrees with an existing claim, do not silently overwrite. Add a `## Contradictions` section listing both with dates and source links.
 6. **No hallucinated numbers.** Use `raw_sources/` or the `tvscreener` MCP. If unavailable, write "Not available" and add to "Open questions".
 7. **Conservative language.** Prefer "appears", "suggests", "warrants further research" over "is" / "will".
+8. **Market-data placement.** Live market data — price, volume, market cap, valuation ratios, performance % — lives **only on the company page** (`## Current snapshot` for fast-changing fields; `## Financials` for ratios). Never create a per-ticker per-day source page for market data. The canonical citation for all such data is `[[sources/tradingview-screener]]`.
 
 ## Log format
 

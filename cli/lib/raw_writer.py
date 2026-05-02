@@ -41,11 +41,13 @@ def write_raw(
     body: str,
     *,
     overwrite: bool = False,
+    skip_if_unchanged: bool = False,
 ) -> Path | None:
     """Write a raw markdown file atomically.
 
     Returns the target path if written, or None if it already existed and
-    overwrite=False.
+    overwrite=False, or if skip_if_unchanged=True and the proposed content
+    is byte-identical to the existing file.
     """
     raw_dir.mkdir(parents=True, exist_ok=True)
     target = raw_dir / filename
@@ -53,6 +55,13 @@ def write_raw(
         return None
 
     content = _format_frontmatter(frontmatter) + "\n\n" + body.strip() + "\n"
+
+    if skip_if_unchanged and target.exists():
+        try:
+            if target.read_text(encoding="utf-8") == content:
+                return None
+        except OSError:
+            pass
 
     fd, tmp = tempfile.mkstemp(prefix=filename + ".", suffix=".tmp", dir=str(raw_dir))
     try:

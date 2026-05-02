@@ -1,6 +1,6 @@
 # Gap Analysis & Agents Needed
 
-_Last updated: 2026-04-30_
+_Last updated: 2026-05-02 (thesis-writer agent shipped — see §3.2)_
 
 ---
 
@@ -26,9 +26,9 @@ The docs define 7 ingest kinds. Only 2 have fetchers and slash commands:
 |---|---|---|---|
 | `news` | `fetch_news.py` ✓ | `ingest-news.md` ✓ | Yes (380+ items) |
 | `company_meta` | `fetch_company_meta.py` ✓ | `ingest-companies.md` ✓ | Yes |
-| `prices` | — | — | **Empty** |
+| `prices` | `fetch_prices.py` ✓ | `ingest-prices.md` ✓ | Yes (daily cron) |
 | `financials` | — | — | **Empty** |
-| `kap_filings` | `fetch_kap.py` ✓ | `ingest-kap.md` ✓ | Yes (live; daily cron) |
+| `kap_filings` | `fetch_kap.py` ✓ | `ingest-kap.md` ✓ | Yes (live; daily cron) | ✓ done |
 | `analyst_notes` | — | — | **Empty** |
 | `macro` | — | — | **Empty** |
 | `sector_reports` | — | — | **Empty** |
@@ -36,7 +36,6 @@ The docs define 7 ingest kinds. Only 2 have fetchers and slash commands:
 ### What is missing — wiki content
 
 Every company page currently has:
-- `Last price: Not available` — no price data pipeline
 - `Bull: Not available / Bear: Not available` — no thesis pages written
 - Financials sourced from AI-generated news summaries, flagged `needs_review`
 - Zero `decisions/` pages (rating scale defined but never used)
@@ -83,17 +82,41 @@ A pre-ingest filter that discards "noise" before graph-ingestor runs was conside
 
 ---
 
-### 3.2 Thesis-writer agent (medium priority, new)
+### 3.2 Thesis-writer agent ✓ built (2026-05-02)
 
-**Role:** Synthesis layer between claims and decisions. Reads all claims for a company and writes or updates `wiki/theses/<TICKER>-bull.md` and `wiki/theses/<TICKER>-bear.md`.
+**Role:** Synthesis layer between claims and decisions. Writes or updates `wiki/theses/<TICKER>-bull.md` and `wiki/theses/<TICKER>-bear.md` for a single ticker.
 
-**When invoked:** Triggered by the slash command when a company's claim count crosses a threshold (e.g., 3+ new claims since last thesis update), or manually by the user.
+**Trigger:** User-triggered per ticker — `uv run python -m cli.run thesis --ticker EREGL` or `/thesis EREGL`. Cron-driven change-detection mode is deliberately not built yet; we want one-ticker-at-a-time judgment-checking before we automate.
 
-**Output:** Populated thesis pages that complete the `evidence → claim → thesis → decision` chain defined in `docs/graph-model.md`. Without this agent, decisions pages cannot be properly authored.
+**Architecture (the heart of the design — keep coherent if changing).**
 
-**File:** `.claude/agents/thesis-writer.md`
+The thesis-writer is the first agent that needs *judgment*, not classification. Its biggest failure mode is being drowned in noise. The defence is a **deterministic Python-side context selector** at `cli/lib/thesis_context.py`:
 
-**Slash command:** `.claude/commands/write-thesis.md`
+- Walks `company → claims → sources → sectors → themes → risks → catalysts → existing thesis` with hard caps (12 claims, 8 sources, 2 sectors, 4 themes, 5 risks, 5 catalysts).
+- Sources are KAP-prioritised, then by recency.
+- Source bodies are trimmed to `Provenance + Key facts + Entities mentioned` only — Notes/caveats stripped.
+- Sector / theme bodies trimmed to their discriminating sections only.
+- The agent never does broad graph traversal — the curated block is canonical for the run.
+
+**Mechanical confidence (not LLM-judged):** `compute_confidence()` in the same module computes a `score = #claims + 2*#KAP_cited - 2*#contradictions - #stale_60d`. High ≥ 6, Medium 3–5, Low ≤ 2. The agent receives this verbatim and is forbidden from overriding it.
+
+**Two-pass execution:** the orchestrator (`cli/orchestrators/write_thesis.py`) runs the agent twice — once with bull framing, once with bear — to avoid the "balanced bull / balanced bear that hedge each other into mush" failure mode. Same context block, different framing.
+
+**Refusal contract:** if the ticker has < 2 claims, the orchestrator refuses without an LLM call and logs `REFUSED — Only N claim(s) for TICKER; below minimum 2.`. Conservative-tone rule applied at the design level: better no thesis than a bad one.
+
+**Risk / catalyst minting:** the agent may write **stub** `wiki/risks/<slug>.md` and `wiki/catalysts/<slug>.md` pages when a thesis surfaces a named risk/catalyst with no dedicated page yet. Stubs are bare — name, one-line description, one source, one company link, one open question. Both folders started empty; theses are the natural moment to populate them.
+
+**Files:**
+- `.claude/agents/thesis-writer.md`
+- `.claude/commands/thesis.md` (slash command name is `/thesis`, not `/write-thesis`)
+- `cli/orchestrators/write_thesis.py`
+- `cli/lib/thesis_context.py`
+- `tests/test_thesis_context.py` (17 unit tests, no LLM)
+
+**Open follow-ups:**
+- Cron-driven change-detection (3+ new claims since last thesis run) — gated on confidence the user-triggered version produces good output across enough tickers first.
+- `--all` mode to walk every tracked ticker — premature until single-ticker output is trusted.
+- Confidence formula tuning once we have ground truth from a few decisions cycles.
 
 ---
 
@@ -132,36 +155,27 @@ A pre-ingest filter that discards "noise" before graph-ingestor runs was conside
 
 ---
 
-## 4. Algorithm changes to graph-ingestor
+## 4. Algorithm changes to graph-ingestor ✓ done
 
 **Design principle: append-only at ingestion, tidy at compaction.**
 
 Nothing is discarded at ingest time. Every raw file gets a source page — a faithful, lightweight record. Growth is controlled by reducing how many new pages are minted per source, not by filtering sources out. Pruning happens later, in the compactor, where decisions are reversible (the raw file and source page still exist).
 
-### 4.1 Merge-not-Mint (claim deduplication) — primary growth control
+### 4.1 Merge-not-Mint (claim deduplication) ✓ implemented
 
-Current behaviour: always mints a new claim file per assertion.
+Step 7 of `graph-ingestor.md` implements the full merge-before-mint procedure: grep `wiki/claims/` for the ticker, read matching files, compare semantically, merge if matching (add source citation + update `last_updated`) or mint only if no match exists. Run summary tracks `claims minted` vs `claims merged` counts.
 
-Proposed change: before writing a new claim, grep `wiki/claims/` for existing claims on the same topic and ticker. If a match exists, add the new source as a second citation on the existing claim page — no new file. Only mint a new claim file when no existing claim covers the same assertion.
+### 4.2 Source page always created — the safe floor ✓ implemented
 
-**Effect:** The fifth article confirming "EREGL strong domestic demand" adds one source citation to `claims/eregl-q1-2026-strong-domestic-demand-high-utilization.md` instead of creating a sixth file. Claim pages become richer; the directory stays bounded.
+Step 5 of `graph-ingestor.md` always writes a source page. Step 2's skip-if-exists check ensures idempotency.
 
-This is the single highest-leverage change to the existing agent.
+### 4.3 Snapshot-not-Append (company page events) ✓ implemented
 
-### 4.2 Source page always created — the safe floor
-
-Every raw item that reaches graph-ingestor gets a `wiki/sources/` page regardless of whether it mints new claims or not. This is the minimal faithful record. It is what the compactor prunes later (after 30 days), not the ingestor.
-
-### 4.3 Snapshot-not-Append (company page events)
-
-Current behaviour: the `## Events` section grows indefinitely with appended dated bullets.
-
-Proposed change:
-- Keep a `## Current snapshot` section that is **overwritten** with the latest known state of each metric.
-- Keep a rolling `## Events (last 30 days)` section with individual bullets.
-- Events older than 30 days are summarised into one paragraph in a `## History` section; individual bullets are dropped.
-
-The compactor agent runs this transformation weekly — the ingestor just appends as now.
+Step 6 of `graph-ingestor.md` enforces snapshot-not-append discipline:
+- `## Financials` table — overwrite existing metric rows in place; only add new rows for new metrics.
+- `## Events (last 30 days)` — append bullets; rename legacy `## Events` headers.
+- `## Current snapshot` — overwrite if present; compactor creates it on first compaction run.
+- `## History` — never touched by ingestor; compactor-managed.
 
 ---
 
@@ -178,9 +192,9 @@ The graph model requires `evidence → claim → thesis → decision`. Current e
 | **Analyst notes** | External price targets and ratings for calibration | Broker research, Quartr, etc. |
 
 **Priority order:**
-1. `fetch_prices.py` — tvscreener MCP is already wired in; this is the fastest unblock.
+1. ~~`fetch_prices.py`~~ ✓ done — `fetch_prices.py` + `ingest-prices` shipped. **Corrected 2026-05-01:** scope reduced to tracked tickers only (wiki/companies/*.md, ~44 vs the prior 774); raw files are now rolling per-ticker (`raw_sources/prices/<TICKER>.md`, no date prefix, overwritten each run) instead of one file per ticker per day; the graph-ingestor's market-data fast path no longer creates `wiki/sources/<...>-price.md` per ingest — all market-data citations point at the single canonical page `wiki/sources/tradingview-screener.md` (lazily created on first run). Fundamentals (P/E, P/B, EV/EBITDA, EPS TTM, dividend yield, debt/equity) overwrite-in-place into the company page's `## Financials` table. New convention rule documented at `docs/conventions.md` §8 ("Market-data placement").
 2. `fetch_financials.py` — unblocks thesis writing.
-3. `fetch_kap.py` — replaces news-summary proxies with primary source data.
+3. ~~`fetch_kap.py`~~ ✓ done — `fetch_kap.py` + `ingest-kap` shipped; KAP filings are live.
 4. `fetch_macro.py` — completes macro theme pages.
 
 ---
@@ -190,9 +204,9 @@ The graph model requires `evidence → claim → thesis → decision`. Current e
 ```
 CLI fetcher
     ↓ (all items pass through — nothing discarded here)
-Graph-ingestor        ← existing; add merge-not-mint + snapshot-not-append
+Graph-ingestor        ← merge-not-mint + snapshot-not-append already implemented ✓
     ↓                    every item gets a source page; claims are merged not minted
-Compactor agent       ← new; weekly; prunes old source pages, merges claims, compacts events
+Compactor agent       ← built ✓; weekly cron; prunes old source pages, merges claims, compacts events
     ↓
 Thesis-writer agent   ← new; synthesis layer; triggered per company
     ↓

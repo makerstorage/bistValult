@@ -69,7 +69,7 @@ uv run python -m cli.fetch_news --help
 
 ## Pipeline commands (cron / scripted, no Claude Code)
 
-All four pipeline commands run through `cli.run`. Each mirrors what the matching `.claude/commands/*.md` slash command did under Claude Code, but talks to OpenRouter (or any OpenAI-compatible endpoint) instead.
+All five pipeline commands run through `cli.run`. Each mirrors what the matching `.claude/commands/*.md` slash command did under Claude Code, but talks to OpenRouter (or any OpenAI-compatible endpoint) instead.
 
 Every command is **idempotent** — re-running back-to-back produces zero new wiki diffs.
 
@@ -91,6 +91,18 @@ Same as `news` but for **KAP filings** (Turkish public-disclosure platform). KAP
 2. If new files exist, dispatches the `graph-ingestor` agent (same agent as `news`; classification differs by `source_kind`).
 3. Logs and prints `INGEST SUMMARY`.
 
+### `uv run python -m cli.run prices`
+
+Fetches the latest market-data snapshot (price + valuation fundamentals) for every **tracked** BIST ticker — i.e. tickers that already have a `wiki/companies/<TICKER>.md` page — and refreshes the wiki in place. **Deterministic fetch, no cost when data is unchanged.**
+
+1. `cli.fetch_prices` — single POST to the TradingView screener. For each tracked ticker writes a single rolling file at `raw_sources/prices/<TICKER>.md` (no date prefix), overwritten each run. The file holds two tables: a `## Snapshot` block (price, change, volume, market cap, 52W range, weekly/monthly perf) and a `## Fundamentals` block (P/E, P/B, EV/EBITDA, EPS TTM, dividend yield, debt/equity, sector, industry). Files with byte-identical content to the previous run are skipped — stdout is empty and the agent is not invoked.
+2. If any file changed, dispatches the `graph-ingestor` agent using the **market-data fast path**: refreshes the company page's `## Current snapshot` lines and overwrites the price/ratio rows of `## Financials` in place. **No `wiki/sources/<...>-price.md` page is ever created** — all market-data citations point at the single canonical page `wiki/sources/tradingview-screener.md` (lazily created on first ingest). No claims are minted; market values are brute facts.
+3. Logs an aggregate entry to `wiki/log.md`.
+
+**Cost:** Only incurred when data has actually changed. LLM cost is per-ticker batch, not per-file.
+
+---
+
 ### `uv run python -m cli.run companies [--ticker TICKER] [--all] [--force]`
 
 Refreshes company metadata (name, sector, aliases) used for entity matching during news ingestion. **Deterministic, no LLM, no cost.**
@@ -101,6 +113,27 @@ uv run python -m cli.run companies --all --force      # full refresh of universe
 ```
 
 Writes `raw_sources/company_meta/<TICKER>.json`. Does **not** create wiki pages — those are minted by the `graph-ingestor` when news references the ticker.
+
+### `uv run python -m cli.run thesis --ticker TICKER [--side bull|bear|both] [--dry-run]`
+
+Synthesises **bull and bear thesis pages** for a single ticker. User-triggered (not cron). The orchestrator first builds a curated subgraph in pure Python — `cli.lib.thesis_context` walks `company → claims → sources → sectors → themes → risks → catalysts` with hard caps (12 claims, 8 sources, 4 themes, 5 risks, 5 catalysts), so the agent only ever sees the most relevant ~25k input tokens for the ticker. Then it dispatches the `thesis-writer` agent **twice** (once per side, sharper than asking for both at once) and writes a single combined entry to `wiki/log.md`.
+
+Mechanical confidence (Low / Medium / High) is computed deterministically from claim count, KAP-cited evidence, contradictions, and staleness — see `cli/lib/thesis_context.py:compute_confidence`. The agent uses it verbatim.
+
+Behaviour:
+
+- `<2` claims → refuses with a `REFUSED` log line and exits 0. Better no thesis than a thesis on thin evidence.
+- `--dry-run` → prints the rendered prompt(s) and exits without an LLM call. Use this to inspect what the agent will see.
+- Existing thesis pages are passed in as `## Existing thesis pages` and full-rewritten; git is the archive.
+- The agent may mint stub `wiki/risks/<slug>.md` and `wiki/catalysts/<slug>.md` pages when surfacing a named risk/catalyst that does not yet have a dedicated page.
+
+```bash
+uv run python -m cli.run thesis --ticker EREGL --dry-run    # inspect prompt
+uv run python -m cli.run thesis --ticker EREGL              # write both sides
+uv run python -m cli.run thesis --ticker EREGL --side bull  # one side only
+```
+
+**Cost:** typically ~$0.05–$0.20 per ticker per side on `anthropic/claude-sonnet-4.5`.
 
 ### `uv run python -m cli.run compact`
 
@@ -147,7 +180,9 @@ Slash commands continue to work inside an interactive `claude` session. They use
 |---|---|
 | `/ingest-news` | `uv run python -m cli.run news` |
 | `/ingest-kap` | `uv run python -m cli.run kap` |
+| `/ingest-prices` | `uv run python -m cli.run prices` |
 | `/ingest-companies` | `uv run python -m cli.run companies` |
+| `/thesis EREGL` | `uv run python -m cli.run thesis --ticker EREGL` |
 | `/compact` | `uv run python -m cli.run compact` |
 
 Use slash commands for ad-hoc work, the `tvscreener` MCP, manual file ingestion, queries, and lint passes. Use the Python entry points for cron and CI.
@@ -172,6 +207,7 @@ Ask Claude to run a lint pass. It checks for stale data, orphan pages, contradic
 |---|---|---|---|
 | `graph-ingestor` | `.claude/agents/graph-ingestor.md` | `cli.run news`, `cli.run kap`, manual ingest | Writes all wiki updates from raw sources |
 | `compactor` | `.claude/agents/compactor.md` | `cli.run compact` | Prunes, merges, and compacts the wiki weekly |
+| `thesis-writer` | `.claude/agents/thesis-writer.md` | `cli.run thesis --ticker T` | Writes one side of a company's thesis (bull or bear) given a curated subgraph |
 
 The Python runner loads each agent's `.md` body verbatim as the LLM system prompt, so the same prompt source is authoritative for both back-ends.
 
@@ -179,7 +215,6 @@ The Python runner loads each agent's `.md` body verbatim as the LLM system promp
 
 | Agent | Purpose |
 |---|---|
-| `thesis-writer` | Synthesises accumulated claims into bull/bear thesis pages per company |
 | `lint` | Automated health check; writes `wiki/dashboards/lint-report.md` |
 | `decision-drafter` | Drafts A–E/U rated decision pages on user request |
 
@@ -220,10 +255,11 @@ If you prefer plain cron over launchd:
 
 ```cron
 # bistValult — full pipeline
-0 */6 * * *  cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run news      >> logs/ingest-news.log 2>&1
-*/30 9-18 * * 1-5  cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run kap >> logs/ingest-kap.log  2>&1
-0   0 * * 0  cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run companies >> logs/ingest-companies.log 2>&1
-0   2 * * 0  cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run compact   >> logs/compact.log 2>&1
+0 */6 * * *        cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run news      >> logs/ingest-news.log 2>&1
+*/30 9-18 * * 1-5  cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run kap       >> logs/ingest-kap.log  2>&1
+30 18 * * 1-5      cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run prices    >> logs/ingest-prices.log 2>&1
+0    0 * * 0       cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run companies >> logs/ingest-companies.log 2>&1
+0    2 * * 0       cd /Users/nuri/Code/bistValult && /opt/homebrew/bin/uv run python -m cli.run compact   >> logs/compact.log 2>&1
 ```
 
 Create the log directory once:
@@ -260,7 +296,7 @@ raw_sources/
   kap_filings/      # KAP primary disclosures (fetch_kap.py)
   company_meta/     # TICKER.json registry (fetch_company_meta.py)
   universe.txt      # tracked tickers, one per line
-  prices/           # price snapshots (fetcher not yet built)
+  prices/           # rolling per-ticker market-data files (fetch_prices.py — daily cron; tracked tickers only)
   financials/       # structured financials (fetcher not yet built)
   analyst_notes/    # broker research (fetcher not yet built)
   macro/            # CBRT rates, CPI, FX (fetcher not yet built)

@@ -53,3 +53,13 @@ grep "^## \[" wiki/log.md | tail -10
 - Pages compacted (events → history): 1 — OTKAR: moved 2026-01-27 MoU event (94 days old) to History section.
 - Review flags: none
 ## [2026-05-01] ingest | kap (no new disclosures)
+## [2026-05-01] ingest | company-meta (9 tickers written)
+## [2026-05-01] ingest | prices (no new snapshots — already up to date)
+## [2026-05-01] ingest | prices (no new snapshots — already up to date)
+## [2026-05-01] ingest | prices (no new snapshots — already up to date)
+## [2026-05-01] ingest | company-meta (9 tickers written)
+## [2026-05-02] thesis | THYAO REFUSED — Only 0 claim(s) for THYAO; below minimum 2. More evidence needed before drafting a thesis.
+## [2026-05-02] thesis | EREGL (bull, bear)
+- bull: [[theses/EREGL-bull]] (created; 2 claims, +2 risks, +2 catalysts)
+- bear: [[theses/EREGL-bear]] (created; 2 claims, +3 risks, +0 catalysts)
+- mechanical confidence: Low (score=2; claims=2, kap_cited=0, contradictions=0, stale_60d=0)

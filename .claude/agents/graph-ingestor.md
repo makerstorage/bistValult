@@ -55,7 +55,60 @@ Branch on the raw frontmatter's `source_kind`:
   - `FR` → `kap-financial-report`
   - `CA` → `kap-corporate-action`
   - anything else → `kap-other`
+- **`source_kind: "prices"`** — follow the **market-data fast path** described in §3a below instead of the standard steps 4–9. Skip steps 4, 5, 7, 8, and 9 entirely for prices.
 - **Unknown `source_kind`** — set `source_subkind: "other"` and `needs_review: true`.
+
+### 3a. Market-data fast path (prices only)
+
+Price files are rolling market-data snapshots — one file per tracked ticker, overwritten on each fetch. They are **not** graph nodes. The wiki effect is exclusively in-place edits to the company page; **no `wiki/sources/<...>-price.md` file is ever created**. The canonical citation for all market data is the single page `[[sources/tradingview-screener]]`.
+
+**Entity:** Read the `ticker` field from the raw frontmatter. That is the sole entity. No text scan needed.
+
+**Canonical source page (lazy creation):**
+On the first price file processed in a run, check whether `wiki/sources/tradingview-screener.md` exists. If not, `Write` it from `templates/source.md` with:
+- Frontmatter: `type: "source"`, `source_kind: "prices"`, `source_subkind: "data-feed"`, `source_publisher: "TradingView screener"`, `needs_review: false`, `tags: ["data-feed"]`.
+- Title: `# TradingView screener — rolling market-data feed`.
+- **Key facts:** "Daily-refreshed price, market cap, performance, and valuation ratios for each tracked BIST ticker. Data overwritten in `raw_sources/prices/<TICKER>.md` on every fetch."
+- **Notes / caveats:** "All values in TRY (native BIST currency). Market cap derived from TradingView; cross-check shares outstanding for precision. This page is the canonical citation for all rows under a company page's `## Current snapshot` and the price/ratio rows of its `## Financials` table."
+
+After this one-time write, every price ingest cites `[[sources/tradingview-screener]]` without creating new source pages.
+
+**Company page update** — `Read` the company page, then `Edit` in-place:
+
+1. **`## Current snapshot`** — overwrite the snapshot lines from the raw file's `## Snapshot` table:
+   ```
+   - Last price: <price> TRY (as of <price_date>) [[sources/tradingview-screener]]
+   - Change: <change_abs> TRY / <change_pct>% (as of <price_date>)
+   - Volume: <volume> shares (as of <price_date>)
+   - Market cap: <mcap> (as of <price_date>)
+   - 52W range: <low52>–<high52> TRY
+   - Perf: <perf_w>% (1W) / <perf_1m>% (1M) (as of <price_date>)
+   ```
+   If the section does not exist yet, add it immediately after the `## Snapshot` section (note the company-page template uses `## Snapshot`, not `## Overview`).
+
+2. **`## Financials` table** — overwrite-in-place (snapshot-not-append, see step 6 line for the same rule applied to news ingests). For each row from the raw file's `## Fundamentals` table, find the matching metric in the company-page table by name; overwrite its `Value` and `As of` cells. Source cell becomes `[[sources/tradingview-screener]]`. Add a new row only when no matching metric exists. Map raw → table:
+   - `P/E (TTM)` → `P/E`
+   - `P/B (FY)` → `P/B`
+   - `EV/EBITDA (TTM)` → `EV/EBITDA` (add row if not present)
+   - `EPS basic (TTM, TRY)` → `EPS (TTM)` (add row if not present)
+   - `Dividend yield` → `Dividend yield` (add row if not present)
+   - `Debt / Equity` → `Debt / Equity` (add row if not present)
+   Do **not** copy `Sector (TV)` / `Industry (TV)` into `## Financials`; if the company page's `## Snapshot` section has a `Sector` line that reads `_Not available_` or `Not available`, update it to `[[sectors/<slug>]]` only when the TradingView-supplied sector matches an existing `wiki/sectors/` page; otherwise leave the line unchanged.
+
+3. **`## Events (last 30 days)`** — do NOT append a price event. Price is not a discrete event.
+
+**Claims:** Do NOT create any claim pages. Price/ratio values are brute facts (step 7 criterion (b) not met).
+
+**Contradictions:** Do NOT check for contradictions. Market data supersedes prior values; it is not a contradiction.
+
+**Index / log:** Do not touch `wiki/index.md` for price ingests (no new pages are minted; the canonical source page is created at most once and indexed only on first creation).
+
+After processing all price files in the batch, append **one** log entry:
+```
+## [<YYYY-MM-DD>] ingest | prices (<N> tickers updated)
+- Tickers: <TICKER1>, <TICKER2>, ...
+- Company pages updated: [[companies/<ticker>]], ...
+```
 
 **KAP filings are primary-source disclosures.** Treat them with higher authority than news coverage of the same event. If a KAP filing contradicts an existing news-derived claim, the KAP filing wins — record the disagreement in the company page's `## Contradictions` section (and on the affected claim) with the KAP source as the prevailing one. The body text is in Turkish; entity matching uses the Turkish aliases already present in `raw_sources/company_meta/*.json`.
 

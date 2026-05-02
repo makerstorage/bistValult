@@ -47,8 +47,8 @@ _None yet._
 
 ## Theses
 
-- Bull: Not available
-- Bear: Not available
+- Bull: [[theses/EREGL-bull]] — 2026-05-02
+- Bear: [[theses/EREGL-bear]] — 2026-05-02
 
 ## Recent decisions
 

@@ -73,11 +73,14 @@ Format: `- [[path/page]] — one-line description`
 
 ## Risks
 
-_None yet._
+- [[risks/energy-cost-exposure]] — Steel production energy cost exposure compressing margins
+- [[risks/global-steel-price-volatility]] — Global steel price volatility affecting revenue and margins
+- [[risks/high-capex-cycle]] — EREGL's $600M 2026 CapEx guidance targeting 1.8x net debt/EBITDA
 
 ## Catalysts
 
-_None yet._
+- [[catalysts/rising-ebitda-per-ton-q2-2026]] — Management guidance for rising EBITDA per ton in Q2 2026
+- [[catalysts/strong-domestic-demand]] — Strong domestic steel demand driving high capacity utilization
 
 ## Claims
 
@@ -103,7 +106,8 @@ _None yet._
 
 ## Theses
 
-_None yet._
+- [[theses/EREGL-bear]] — EREGL bear thesis: thin Q1 margins, $600M CapEx cycle, high capacity leaves volume upside limited
+- [[theses/EREGL-bull]] — EREGL bull thesis: strong Q1 2026 results, 96% utilization, rising EBITDA/ton guidance
 
 ## Decisions
 
